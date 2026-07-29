@@ -188,6 +188,9 @@ header.scrolled nav a:hover{
     display:none;
 }
 
+/* Burger: visual size stays 30x22px, but padding + negative
+   margin extends the real clickable/tappable area to ~44x44px
+   (Apple/Google minimum touch target) without shifting layout. */
 .nav-burger{
     display:none;
     width:30px;
@@ -195,6 +198,8 @@ header.scrolled nav a:hover{
     position:relative;
     cursor:pointer;
     z-index:1001;
+    padding:11px;
+    margin:-11px;
 }
 
 .nav-burger span,
@@ -218,6 +223,42 @@ header.scrolled .nav-burger span::after{
 .nav-burger span{ top:10px; }
 .nav-burger span::before{ top:-9px; }
 .nav-burger span::after{ top:9px; }
+
+/* Phones in landscape (e.g. iPhone ~844px wide) still get the
+   compact burger menu instead of the full desktop nav, which
+   would otherwise feel cramped in a short landscape header. */
+@media(max-width:900px) and (orientation:landscape){
+
+    nav{
+        position:fixed;
+        top:0;
+        right:0;
+        height:100vh;
+        width:min(60vw,320px);
+        background:var(--dusk);
+        flex-direction:column;
+        justify-content:center;
+        align-items:flex-start;
+        padding:40px;
+        transform:translateX(100%);
+        transition:.4s ease;
+    }
+
+    nav a{
+        margin:0 0 22px;
+        font-size:18px;
+        color:var(--white);
+    }
+
+    .nav-burger{
+        display:block;
+    }
+
+    .nav-toggle:checked ~ nav{
+        transform:translateX(0);
+    }
+
+}
 
 @media(max-width:600px){
 

@@ -24,7 +24,10 @@ HERO
 
 .morondava-hero{
 
-    min-height:100vh;
+    min-height:100vh;   /* fallback for older browsers */
+    min-height:100svh;  /* small viewport height: excludes the iOS Safari
+                            address bar, so the hero fits the real visible
+                            screen instead of overflowing on iPhone */
     display:grid;
     grid-template-columns:1.15fr 1fr;
 
@@ -153,7 +156,10 @@ HERO
     width:100%;
     height:100%;
     object-fit:cover;
-    transition:8s;
+    transition:transform 8s; /* was: transition:8s (applied to every animatable
+                                 property, not just the zoom — narrowing it to
+                                 transform avoids extra rendering work on
+                                 lower-power phones) */
 
 }
 
