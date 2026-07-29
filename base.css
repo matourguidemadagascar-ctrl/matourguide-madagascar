@@ -1,0 +1,322 @@
+/* ===================================================
+   MA'TOUR GUIDE MADAGASCAR — BASE / DESIGN SYSTEM
+   Shared on every page: reset, typography, header,
+   navigation, buttons.
+
+   Loaded FIRST, before the page-specific stylesheet
+   (style.css, morondava.css, ...). Page stylesheets
+   should only contain page-specific sections — never
+   redeclare header, nav, .btn or the reset below, or
+   they will silently override this system.
+
+   Each destination keeps its own mood through hero
+   backgrounds and section accents in its own file —
+   but header, typography and buttons stay identical
+   everywhere so the site reads as one brand.
+=================================================== */
+
+:root{
+
+    /* -- Brand palette (sunset over the baobabs) -- */
+    --dusk:        #1F1830;   /* deep indigo-plum, used for header/footer dark states */
+    --dusk-2:      #402541;   /* transitional plum                                    */
+    --ember:       #C1552B;   /* burnt sunset orange — primary action color           */
+    --gold:        #E0A83E;   /* baobab gold-hour light — hover / secondary accent    */
+    --sand:        #F4ECDB;   /* warm sand — default page background                  */
+    --sand-deep:   #EADFC7;   /* darker sand for alternating sections                 */
+    --bark:        #3B2A20;   /* deep bark brown — headings                           */
+    --bark-soft:   #6B5644;   /* softened bark — body copy                            */
+    --white:       #FFFFFF;
+
+    --display: 'Fraunces', serif;
+    --body: 'Work Sans', sans-serif;
+
+    --radius-pill: 50px;
+    --radius-card: 20px;
+    --shadow: 0 25px 60px rgba(43,26,10,.16);
+    --shadow-soft: 0 12px 30px rgba(43,26,10,.10);
+
+}
+
+/* ===============================
+RESET
+=============================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:var(--body);
+    background:var(--sand);
+    color:var(--bark-soft);
+    overflow-x:hidden;
+
+}
+
+img{
+    display:block;
+    max-width:100%;
+}
+
+:focus-visible{
+    outline:3px solid var(--gold);
+    outline-offset:3px;
+}
+
+@media (prefers-reduced-motion: reduce){
+    *{
+        animation-duration:.001ms !important;
+        transition-duration:.001ms !important;
+        scroll-behavior:auto !important;
+    }
+}
+
+.eyebrow{
+    display:inline-block;
+    color:var(--ember);
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:12.5px;
+    font-weight:600;
+}
+
+.eyebrow-light{
+    color:var(--gold);
+}
+
+/* ===============================
+HEADER
+=============================== */
+
+header{
+
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:26px 70px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:999;
+    transition:.4s;
+
+}
+
+header.scrolled{
+
+    background:rgba(244,236,219,.92);
+    backdrop-filter:blur(10px);
+    box-shadow:0 5px 25px rgba(43,26,10,.10);
+    padding:18px 70px;
+
+}
+
+.logo{
+
+    color:var(--white);
+    font-family:var(--display);
+    font-size:23px;
+    font-weight:600;
+    letter-spacing:.3px;
+
+}
+
+.logo span{
+    font-style:italic;
+    font-weight:500;
+    opacity:.85;
+}
+
+header.scrolled .logo{
+    color:var(--bark);
+}
+
+nav{
+    display:flex;
+    align-items:center;
+}
+
+nav a{
+
+    text-decoration:none;
+    color:rgba(255,255,255,.9);
+    margin-left:38px;
+    transition:.3s;
+    font-weight:500;
+    font-size:15px;
+    position:relative;
+
+}
+
+nav a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0;
+    height:2px;
+    background:var(--gold);
+    transition:.3s;
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+header.scrolled nav a{
+    color:var(--bark);
+}
+
+nav a:hover{
+    color:var(--gold);
+}
+
+header.scrolled nav a:hover{
+    color:var(--ember);
+}
+
+.nav-toggle{
+    display:none;
+}
+
+.nav-burger{
+    display:none;
+    width:30px;
+    height:22px;
+    position:relative;
+    cursor:pointer;
+    z-index:1001;
+}
+
+.nav-burger span,
+.nav-burger span::before,
+.nav-burger span::after{
+    content:"";
+    position:absolute;
+    left:0;
+    width:100%;
+    height:2px;
+    background:var(--white);
+    transition:.3s;
+}
+
+header.scrolled .nav-burger span,
+header.scrolled .nav-burger span::before,
+header.scrolled .nav-burger span::after{
+    background:var(--bark);
+}
+
+.nav-burger span{ top:10px; }
+.nav-burger span::before{ top:-9px; }
+.nav-burger span::after{ top:9px; }
+
+@media(max-width:600px){
+
+    header{
+        padding:20px 24px;
+    }
+
+    header.scrolled{
+        padding:16px 24px;
+    }
+
+    nav{
+        position:fixed;
+        top:0;
+        right:0;
+        height:100vh;
+        width:min(78vw,320px);
+        background:var(--dusk);
+        flex-direction:column;
+        justify-content:center;
+        align-items:flex-start;
+        padding:40px;
+        transform:translateX(100%);
+        transition:.4s ease;
+    }
+
+    nav a{
+        margin:0 0 26px;
+        font-size:19px;
+        color:var(--white);
+    }
+
+    .nav-burger{
+        display:block;
+    }
+
+    .nav-toggle:checked ~ nav{
+        transform:translateX(0);
+    }
+
+}
+
+/* ===============================
+BUTTONS
+=============================== */
+
+.btn{
+
+    display:inline-block;
+    width:fit-content;
+    padding:17px 36px;
+    border-radius:var(--radius-pill);
+    background:var(--ember);
+    color:var(--white);
+    text-decoration:none;
+    font-weight:600;
+    font-size:15px;
+    transition:.35s;
+    border:1px solid var(--ember);
+
+}
+
+.btn:hover{
+    background:var(--gold);
+    border-color:var(--gold);
+    color:var(--dusk);
+    transform:translateY(-2px);
+}
+
+.btn-ghost{
+    background:transparent;
+    border:1px solid rgba(255,255,255,.4);
+    color:var(--white);
+}
+
+.btn-ghost:hover{
+    background:rgba(255,255,255,.12);
+    border-color:var(--white);
+    color:var(--white);
+}
+
+.btn-outline{
+    background:transparent;
+    border:2px solid var(--bark);
+    color:var(--bark);
+}
+
+.btn-outline:hover{
+    background:var(--bark);
+    border-color:var(--bark);
+    color:var(--white);
+}
+
+@media(max-width:600px){
+
+    .btn{
+        width:100%;
+        max-width:320px;
+        text-align:center;
+    }
+
+}

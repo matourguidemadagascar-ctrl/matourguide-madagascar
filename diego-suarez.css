@@ -1,0 +1,788 @@
+/* ===================================================
+   DIEGO SUAREZ — Ma'Tour Guide Madagascar
+   Direction : "Choose your adventure" — trois grandes
+   tuiles photographiques (Sea / Mountains / Tsingy) qui
+   pilotent un bloc de cartes dynamique en dessous.
+   Très différent de la mosaïque de Tuléar et de la
+   grille de cartes de Nosy Be : ici, une seule mise en
+   page, mais trois ambiances de couleur qui se
+   substituent l'une à l'autre.
+
+   Requires base.css to be loaded first (reset,
+   typography, header, nav, buttons live there).
+=================================================== */
+
+:root{
+
+    --diego-ink:        #17242A;   /* nuit sur la baie, utilisé pour les overlays          */
+    --diego-sand:       #F2ECDD;   /* sable clair — fond des sections claires              */
+
+    --diego-sea:        #1C8CA8;   /* Mer d'Émeraude — bleu turquoise                      */
+    --diego-sea-dark:   #0F5C70;
+
+    --diego-mountain:      #3B6E44;   /* Montagne d'Ambre — vert forêt                     */
+    --diego-mountain-dark: #22462A;
+
+    --diego-tsingy:      #C1662E;   /* Tsingy Rouge — ocre                                 */
+    --diego-tsingy-dark: #8C441C;
+
+}
+
+/* ===============================
+HERO — mer d'émeraude
+=============================== */
+
+.diego-hero{
+
+    position:relative;
+    height:100vh;
+    min-height:640px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    background:url('images/diego/hero.jpg') center/cover no-repeat;
+
+}
+
+.diego-hero-scrim{
+
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(23,36,42,.35) 0%, rgba(23,36,42,.32) 45%, rgba(23,36,42,.78) 100%);
+    z-index:1;
+
+}
+
+.diego-hero-content{
+
+    position:relative;
+    z-index:2;
+    color:var(--white);
+    text-align:center;
+    padding:0 8%;
+    max-width:780px;
+
+}
+
+.diego-hero-content .eyebrow{
+    color:var(--diego-sea);
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.25);
+    padding:7px 16px;
+    border-radius:50px;
+    display:inline-block;
+}
+
+.diego-hero-content h1{
+
+    font-family:var(--display);
+    font-weight:600;
+    font-size:60px;
+    line-height:1.1;
+    margin:22px 0 18px;
+
+}
+
+.diego-hero-trio{
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    font-family:var(--display);
+    font-weight:500;
+    font-size:22px;
+    letter-spacing:.3px;
+    margin-bottom:26px;
+
+}
+
+.diego-hero-trio .dot{
+    color:rgba(255,255,255,.4);
+}
+
+.diego-hero-trio .word-sea{ color:#7FD9E8; }
+.diego-hero-trio .word-mountains{ color:#8FCB94; }
+.diego-hero-trio .word-tsingy{ color:#F0A669; }
+
+.diego-hero-text{
+
+    font-size:18px;
+    font-weight:300;
+    color:rgba(255,255,255,.88);
+    line-height:1.75;
+    margin:0 auto 36px;
+    max-width:600px;
+
+}
+
+.diego-hero-content .btn{
+    background:var(--diego-sea);
+    border-color:var(--diego-sea);
+}
+
+.diego-hero-content .btn:hover{
+    background:var(--diego-tsingy);
+    border-color:var(--diego-tsingy);
+}
+
+@media(max-width:900px){
+    .diego-hero-content h1{ font-size:42px; }
+}
+
+@media(max-width:600px){
+    .diego-hero-content h1{ font-size:32px; }
+    .diego-hero-trio{ font-size:17px; gap:8px; }
+    .diego-hero-text{ font-size:16px; }
+}
+
+/* ===============================
+CHOOSE YOUR ADVENTURE — tuiles
+=============================== */
+
+.adventure{
+
+    padding:120px 8% 90px;
+    background:var(--diego-sand);
+
+}
+
+.adventure .section-heading{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.adventure .section-heading .eyebrow{
+    color:var(--diego-tsingy-dark);
+}
+
+.adventure .section-heading h2{
+
+    font-family:var(--display);
+    font-weight:600;
+    font-size:44px;
+    color:var(--diego-ink);
+    margin:14px 0 16px;
+
+}
+
+.adventure .section-heading p{
+    max-width:560px;
+    margin:0 auto;
+    color:var(--bark-soft);
+    font-size:16px;
+    line-height:1.7;
+}
+
+.adventure-tiles{
+
+    display:grid;
+    grid-template-columns:1fr;
+    gap:22px;
+    max-width:1300px;
+    margin:0 auto;
+
+}
+
+.adventure-tile{
+
+    position:relative;
+    height:220px;
+    border:none;
+    border-radius:20px;
+    overflow:hidden;
+    cursor:pointer;
+    background-size:cover;
+    background-position:center;
+    padding:0;
+    text-align:left;
+    box-shadow:0 14px 32px rgba(23,36,42,.16);
+    transition:transform .4s ease, box-shadow .4s ease;
+
+}
+
+.adventure-tile-scrim{
+
+    position:absolute;
+    inset:0;
+    background:linear-gradient(100deg, rgba(23,36,42,.75) 0%, rgba(23,36,42,.35) 55%, rgba(23,36,42,.15) 100%);
+    transition:background .4s ease;
+
+}
+
+.adventure-tile[data-category="sea"] .adventure-tile-scrim{
+    background:linear-gradient(100deg, rgba(15,92,112,.8) 0%, rgba(15,92,112,.35) 55%, rgba(15,92,112,.12) 100%);
+}
+.adventure-tile[data-category="mountains"] .adventure-tile-scrim{
+    background:linear-gradient(100deg, rgba(34,70,42,.8) 0%, rgba(34,70,42,.35) 55%, rgba(34,70,42,.12) 100%);
+}
+.adventure-tile[data-category="tsingy"] .adventure-tile-scrim{
+    background:linear-gradient(100deg, rgba(140,68,28,.8) 0%, rgba(140,68,28,.35) 55%, rgba(140,68,28,.12) 100%);
+}
+
+.adventure-tile-content{
+
+    position:relative;
+    z-index:2;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:center;
+    padding:0 6%;
+    color:var(--white);
+
+}
+
+.adventure-tile-icon{
+    font-size:34px;
+    margin-bottom:8px;
+    filter:drop-shadow(0 4px 10px rgba(0,0,0,.3));
+}
+
+.adventure-tile-title{
+
+    font-family:var(--display);
+    font-weight:600;
+    font-size:34px;
+    letter-spacing:.5px;
+    text-transform:uppercase;
+    margin-bottom:6px;
+
+}
+
+.adventure-tile-tagline{
+    font-size:15px;
+    font-weight:300;
+    color:rgba(255,255,255,.85);
+}
+
+.adventure-tile:hover,
+.adventure-tile:focus-visible{
+    transform:translateY(-4px) scale(1.01);
+    box-shadow:0 22px 44px rgba(23,36,42,.24);
+}
+
+.adventure-tile:hover .adventure-tile-scrim,
+.adventure-tile:focus-visible .adventure-tile-scrim{
+    filter:saturate(1.3) brightness(1.05);
+}
+
+.adventure-tile:hover .adventure-tile-icon{
+    transform:scale(1.12);
+}
+
+.adventure-tile-icon{
+    transition:transform .35s ease;
+}
+
+.adventure-tile.active{
+    outline:3px solid rgba(255,255,255,.85);
+    outline-offset:-3px;
+}
+
+.adventure-tile[data-category="sea"].active{ box-shadow:0 0 0 4px var(--diego-sea), 0 22px 44px rgba(23,36,42,.24); }
+.adventure-tile[data-category="mountains"].active{ box-shadow:0 0 0 4px var(--diego-mountain), 0 22px 44px rgba(23,36,42,.24); }
+.adventure-tile[data-category="tsingy"].active{ box-shadow:0 0 0 4px var(--diego-tsingy), 0 22px 44px rgba(23,36,42,.24); }
+
+@media(min-width:900px){
+
+    .adventure-tiles{
+        grid-template-columns:repeat(3, 1fr);
+    }
+
+    .adventure-tile{
+        height:340px;
+    }
+
+}
+
+@media(max-width:600px){
+    .adventure{ padding:90px 6% 70px; }
+    .adventure-tile{ height:190px; }
+    .adventure-tile-title{ font-size:26px; }
+}
+
+/* ===============================
+ADVENTURE DETAILS — cartes dynamiques
+=============================== */
+
+.adventure-details{
+
+    padding:20px 8% 130px;
+    background:var(--diego-sand);
+    transition:background .5s ease;
+
+}
+
+.details-heading{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 56px;
+}
+
+.details-heading h3{
+
+    font-family:var(--display);
+    font-weight:600;
+    font-size:32px;
+    color:var(--diego-ink);
+    margin-bottom:8px;
+    transition:color .35s ease;
+
+}
+
+.details-heading p{
+    font-size:15px;
+    letter-spacing:.3px;
+    color:var(--bark-soft);
+}
+
+.detail-set{
+
+    display:none;
+    grid-template-columns:repeat(3, 1fr);
+    gap:26px;
+    max-width:1300px;
+    margin:0 auto;
+
+}
+
+.detail-set.active{
+    display:grid;
+}
+
+.detail-set{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity .4s ease, transform .4s ease;
+}
+
+.detail-set.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.detail-card{
+
+    background:var(--white);
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 14px 32px rgba(23,36,42,.12);
+    transition:transform .35s ease, box-shadow .35s ease;
+
+}
+
+.detail-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 22px 44px rgba(23,36,42,.18);
+}
+
+.detail-card img{
+
+    width:100%;
+    height:210px;
+    object-fit:cover;
+    display:block;
+
+}
+
+.detail-card-body{
+    padding:26px 24px 28px;
+}
+
+.detail-badge{
+
+    display:inline-block;
+    padding:5px 14px;
+    border-radius:30px;
+    font-size:11.5px;
+    font-weight:600;
+    letter-spacing:.5px;
+    text-transform:uppercase;
+    color:var(--white);
+    background:var(--diego-sea);
+    margin-bottom:14px;
+    transition:background .35s ease;
+
+}
+
+.detail-card h4{
+
+    font-family:var(--display);
+    font-weight:600;
+    font-size:21px;
+    color:var(--diego-ink);
+    margin-bottom:10px;
+
+}
+
+.detail-card p{
+    font-size:14.5px;
+    line-height:1.7;
+    color:var(--bark-soft);
+    margin-bottom:16px;
+}
+
+.detail-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.detail-tags span{
+
+    padding:5px 12px;
+    border-radius:30px;
+    font-size:11.5px;
+    font-weight:500;
+    color:var(--diego-ink);
+    background:rgba(23,36,42,.06);
+    border:1px solid rgba(23,36,42,.1);
+
+}
+
+/* --- teintes par thème (portées par [data-theme] sur la section) --- */
+
+.adventure-details[data-theme="sea"] .details-heading h3{ color:var(--diego-sea-dark); }
+.adventure-details[data-theme="sea"] .detail-badge{ background:var(--diego-sea); }
+
+.adventure-details[data-theme="mountains"] .details-heading h3{ color:var(--diego-mountain-dark); }
+.adventure-details[data-theme="mountains"] .detail-badge{ background:var(--diego-mountain); }
+
+.adventure-details[data-theme="tsingy"] .details-heading h3{ color:var(--diego-tsingy-dark); }
+.adventure-details[data-theme="tsingy"] .detail-badge{ background:var(--diego-tsingy); }
+
+@media(max-width:900px){
+    .detail-set{ grid-template-columns:1fr 1fr; }
+}
+
+@media(max-width:600px){
+    .adventure-details{ padding:0 6% 100px; }
+    .detail-set{ grid-template-columns:1fr; }
+    .details-heading h3{ font-size:26px; }
+}
+
+@media(prefers-reduced-motion: reduce){
+    .detail-set,
+    .adventure-tile,
+    .adventure-tile-icon,
+    .detail-card{ transition:none; }
+}
+
+/* ===============================
+CONTACT
+=============================== */
+
+.diego-contact{
+
+    position:relative;
+    padding:150px 8% 120px;
+    text-align:center;
+    color:var(--white);
+    background:linear-gradient(150deg, var(--diego-sea-dark) 0%, var(--diego-ink) 45%, var(--diego-tsingy-dark) 100%);
+    overflow:hidden;
+
+}
+
+.diego-contact h2{
+
+    font-family:var(--display);
+    font-weight:600;
+    font-size:42px;
+    margin-bottom:18px;
+
+}
+
+.diego-contact p{
+
+    font-size:18px;
+    color:rgba(255,255,255,.85);
+    max-width:600px;
+    margin:0 auto 40px;
+    font-weight:300;
+
+}
+
+.diego-contact .btn{
+    background:var(--diego-mountain);
+    border-color:var(--diego-mountain);
+}
+
+.diego-contact .btn:hover{
+    background:var(--diego-tsingy);
+    border-color:var(--diego-tsingy);
+}
+
+@media(max-width:600px){
+    .diego-contact{ padding:100px 8% 90px; }
+    .diego-contact h2{ font-size:32px; }
+}
+
+/* ===================================================
+   FOOTER — GLASSMORPHISM "BAIE AU CRÉPUSCULE"
+   Version Diego Suarez du footer en verre : mélange
+   des trois teintes (mer / montagne / tsingy) au lieu
+   d'un dégradé à deux tons comme sur Tuléar.
+=================================================== */
+
+.footer-glass-diego{
+
+    position:relative;
+    padding:150px 8% 0;
+    background:
+        radial-gradient(ellipse 900px 500px at 10% 0%, rgba(28,140,168,.18), transparent 60%),
+        radial-gradient(ellipse 900px 600px at 88% 100%, rgba(193,102,46,.20), transparent 55%),
+        linear-gradient(190deg, #16221E 0%, var(--diego-ink) 45%, #101B20 100%);
+    overflow:hidden;
+    isolation:isolate;
+
+}
+
+.footer-ridge-diego{
+
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:90px;
+    z-index:1;
+
+}
+
+.footer-glass-container-diego{
+
+    position:relative;
+    z-index:2;
+    max-width:1300px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1.3fr 1fr 1fr 1.1fr;
+    gap:22px;
+
+}
+
+.footer-glass-panel-diego{
+
+    position:relative;
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(22px) saturate(140%);
+    -webkit-backdrop-filter:blur(22px) saturate(140%);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:20px;
+    padding:32px 28px;
+    box-shadow:
+        0 20px 44px rgba(0,0,0,.28),
+        inset 0 1px 0 rgba(255,255,255,.14);
+
+}
+
+.footer-brand-diego h3{
+
+    font-family:var(--display);
+    font-weight:600;
+    font-size:22px;
+    color:var(--diego-sand);
+    margin-bottom:14px;
+
+}
+
+.footer-brand-diego p{
+
+    font-size:14.5px;
+    line-height:1.75;
+    color:rgba(242,236,221,.62);
+    font-weight:300;
+    max-width:280px;
+    margin-bottom:26px;
+
+}
+
+.footer-social-diego{
+    display:flex;
+    gap:10px;
+}
+
+.footer-social-diego a{
+
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.14);
+    color:var(--diego-sand);
+    text-decoration:none;
+    transition:background .3s ease, border-color .3s ease, transform .3s ease;
+
+}
+
+.footer-social-diego a:hover{
+    background:rgba(28,140,168,.2);
+    border-color:rgba(28,140,168,.5);
+    transform:translateY(-3px);
+}
+
+.footer-social-diego svg{
+    width:16px;
+    height:16px;
+    fill:currentColor;
+}
+
+.footer-glass-panel-diego h4{
+
+    font-family:var(--display);
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:.4px;
+    color:#E4A96B;
+    text-transform:uppercase;
+    margin-bottom:20px;
+
+}
+
+.footer-glass-panel-diego a,
+.footer-glass-panel-diego .footer-static-diego{
+
+    display:block;
+    font-size:14.5px;
+    color:rgba(242,236,221,.78);
+    text-decoration:none;
+    line-height:1;
+    margin-bottom:16px;
+    transition:color .25s ease, transform .25s ease;
+
+}
+
+.footer-glass-panel-diego a:hover{
+    color:var(--diego-sand);
+    transform:translateX(4px);
+}
+
+.footer-glass-panel-diego a:last-child,
+.footer-glass-panel-diego .footer-static-diego:last-child{
+    margin-bottom:0;
+}
+
+.footer-contact-panel-diego p{
+
+    font-size:14px;
+    line-height:1.7;
+    color:rgba(242,236,221,.62);
+    font-weight:300;
+    margin-bottom:22px;
+
+}
+
+.footer-glass-btn-diego{
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    width:100%;
+    padding:13px 18px;
+    border-radius:50px;
+    font-size:13.5px;
+    font-weight:500;
+    text-decoration:none;
+    margin-bottom:12px;
+    border:1px solid rgba(255,255,255,.16);
+    background:rgba(255,255,255,.06);
+    color:var(--diego-sand);
+    backdrop-filter:blur(6px);
+    transition:background .3s ease, border-color .3s ease, transform .3s ease;
+
+}
+
+.footer-glass-btn-diego:last-child{ margin-bottom:0; }
+
+.footer-glass-btn-diego.filled{
+    background:rgba(28,140,168,.22);
+    border-color:rgba(28,140,168,.5);
+}
+
+.footer-glass-btn-diego:hover{
+    transform:translateY(-2px);
+    background:rgba(193,102,46,.2);
+    border-color:rgba(193,102,46,.55);
+}
+
+.footer-glass-btn-diego svg{
+    width:15px;
+    height:15px;
+    fill:currentColor;
+}
+
+.footer-bottom-glass-diego{
+
+    position:relative;
+    z-index:2;
+    max-width:1300px;
+    margin:56px auto 0;
+    padding:22px 6px 40px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+    border-top:1px solid rgba(255,255,255,.1);
+
+}
+
+.footer-bottom-glass-diego p{
+    font-size:12.5px;
+    color:rgba(242,236,221,.45);
+    font-weight:300;
+    letter-spacing:.2px;
+}
+
+.footer-bottom-links-diego{
+    display:flex;
+    gap:22px;
+}
+
+.footer-bottom-links-diego a{
+    font-size:12.5px;
+    color:rgba(242,236,221,.45);
+    text-decoration:none;
+    transition:color .25s ease;
+}
+
+.footer-bottom-links-diego a:hover{
+    color:#E4A96B;
+}
+
+@media(max-width:1000px){
+
+    .footer-glass-container-diego{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .footer-brand-diego{ grid-column:span 2; }
+
+}
+
+@media(max-width:600px){
+
+    .footer-glass-diego{ padding:110px 6% 0; }
+
+    .footer-glass-container-diego{
+        grid-template-columns:1fr;
+    }
+
+    .footer-brand-diego{ grid-column:span 1; }
+
+    .footer-bottom-glass-diego{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+}
+
+@media(prefers-reduced-motion: reduce){
+    .footer-social-diego a, .footer-glass-btn-diego, .footer-glass-panel-diego a{ transition:none; }
+}

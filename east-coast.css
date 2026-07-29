@@ -1,0 +1,665 @@
+/* ===================================================
+   EAST COAST — Ma'Tour Guide Madagascar
+   Direction : "Carnet de voyage" — chapitres plein
+   écran qui se révèlent au scroll. Design organique et
+   narratif, très différent des grilles/mosaïques
+   des autres destinations.
+
+   Requires base.css to be loaded first (reset,
+   typography, header, nav, buttons live there).
+=================================================== */
+
+:root{
+
+    --ec-forest:  #1F3D2B;   /* vert forêt profond — encre des textes / overlays   */
+    --ec-emerald: #2F7A5D;   /* canopée — accent principal                         */
+    --ec-ocean:   #1C6E8C;   /* océan Indien — accent secondaire                   */
+    --ec-coral:   #E8946B;   /* corail doux — accent Sainte-Marie                  */
+    --ec-mist:    #F4F1E8;   /* brume matinale — fond des sections claires         */
+
+}
+
+/* ===============================
+HERO — doux, sans découpe agressive
+=============================== */
+
+.journal-hero{
+
+    position:relative;
+    height:100vh;
+    min-height:600px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    background:url('images/east-coast/hero.jpg') center/cover no-repeat;
+
+}
+
+.journal-hero-scrim{
+
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(31,61,43,.35) 0%, rgba(31,61,43,.25) 45%, rgba(31,61,43,.65) 100%);
+
+}
+
+.journal-hero-content{
+
+    position:relative;
+    z-index:2;
+    text-align:center;
+    color:var(--white);
+    max-width:760px;
+    padding:0 24px;
+    opacity:0;
+    transform:translateY(18px);
+    animation:journalFadeIn 1.4s ease .2s forwards;
+
+}
+
+@keyframes journalFadeIn{
+    to{ opacity:1; transform:translateY(0); }
+}
+
+.journal-hero-content .eyebrow{
+    color:var(--ec-coral);
+}
+
+.journal-hero-content h1{
+
+    font-family:var(--display);
+    font-weight:600;
+    font-style:italic;
+    font-size:60px;
+    line-height:1.15;
+    margin:18px 0 22px;
+
+}
+
+.journal-hero-content p{
+
+    font-size:19px;
+    font-weight:300;
+    color:rgba(255,255,255,.9);
+    margin-bottom:14px;
+
+}
+
+.scroll-cue{
+
+    position:absolute;
+    left:50%;
+    bottom:38px;
+    transform:translateX(-50%);
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    color:var(--white);
+    opacity:.8;
+
+}
+
+.scroll-cue span{
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.scroll-cue svg{
+    width:16px;
+    height:16px;
+    animation:scrollBounce 1.8s ease-in-out infinite;
+}
+
+@keyframes scrollBounce{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(8px); }
+}
+
+@media(max-width:600px){
+
+    .journal-hero-content h1{ font-size:38px; }
+    .journal-hero-content p{ font-size:16.5px; }
+
+}
+
+/* ===============================
+INTRO — courte transition
+=============================== */
+
+.journal-intro{
+
+    padding:110px 12% 90px;
+    text-align:center;
+    background:var(--ec-mist);
+
+}
+
+.journal-intro .eyebrow{
+    color:var(--ec-emerald);
+}
+
+.journal-intro p{
+
+    font-family:var(--display);
+    font-style:italic;
+    font-size:26px;
+    line-height:1.6;
+    max-width:720px;
+    margin:20px auto 0;
+    color:var(--ec-forest);
+    font-weight:500;
+
+}
+
+/* ===============================
+CHAPITRES — le carnet
+=============================== */
+
+.chapter{
+
+    position:relative;
+    min-height:92vh;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+
+}
+
+.chapter-media{
+    position:absolute;
+    inset:0;
+}
+
+.chapter-media img{
+
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+}
+
+.chapter-media::after{
+
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(0deg, rgba(31,61,43,.82) 0%, rgba(31,61,43,.15) 55%, transparent 80%);
+
+}
+
+.chapter-panel{
+
+    position:relative;
+    z-index:2;
+    color:var(--white);
+    padding:70px 8% 90px;
+    max-width:660px;
+    opacity:0;
+    transform:translateY(46px);
+    transition:opacity .9s ease, transform .9s ease;
+
+}
+
+.chapter-panel.is-visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.chapter-index{
+
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--display);
+    font-style:italic;
+    font-size:15px;
+    color:var(--ec-coral);
+    margin-bottom:14px;
+
+}
+
+.chapter-index::before{
+
+    content:"";
+    width:26px;
+    height:1px;
+    background:var(--ec-coral);
+
+}
+
+.chapter-panel h3{
+
+    font-family:var(--display);
+    font-weight:600;
+    font-size:46px;
+    margin-bottom:18px;
+
+}
+
+.chapter-panel p{
+
+    font-size:17px;
+    line-height:1.85;
+    color:rgba(255,255,255,.88);
+    margin-bottom:22px;
+    max-width:540px;
+
+}
+
+.chapter-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+}
+
+.chapter-tags span{
+
+    padding:8px 16px;
+    border-radius:30px;
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.28);
+    font-size:12.5px;
+    font-weight:500;
+
+}
+
+/* alterne le point d'ancrage du texte pour rythmer la lecture */
+.chapter:nth-child(even) .chapter-panel{
+    margin-left:auto;
+    text-align:right;
+}
+
+.chapter:nth-child(even) .chapter-index{
+    flex-direction:row-reverse;
+}
+
+.chapter:nth-child(even) .chapter-tags{
+    justify-content:flex-end;
+}
+
+.chapter:nth-child(even) .chapter-panel p{
+    margin-left:auto;
+}
+
+/* accent Sainte-Marie (dernier chapitre) en corail plutôt qu'océan */
+.chapter.accent-coral .chapter-index{
+    color:var(--ec-coral);
+}
+
+.chapter.accent-ocean .chapter-index{
+    color:#7FD4E0;
+}
+
+@media(max-width:900px){
+
+    .chapter-panel h3{ font-size:34px; }
+    .chapter-panel{ padding:50px 7% 70px; max-width:100%; }
+
+    .chapter:nth-child(even) .chapter-panel{
+        margin-left:0;
+        text-align:left;
+    }
+
+    .chapter:nth-child(even) .chapter-index{
+        flex-direction:row;
+    }
+
+    .chapter:nth-child(even) .chapter-tags{
+        justify-content:flex-start;
+    }
+
+    .chapter:nth-child(even) .chapter-panel p{
+        margin-left:0;
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce){
+
+    .journal-hero-content{
+        animation:none;
+        opacity:1;
+        transform:none;
+    }
+
+    .chapter-panel{
+        transition:none;
+        opacity:1;
+        transform:none;
+    }
+
+    .scroll-cue svg{
+        animation:none;
+    }
+
+}
+
+/* ===============================
+CONTACT
+=============================== */
+
+.journal-contact{
+
+    position:relative;
+    padding:150px 8% 120px;
+    text-align:center;
+    color:var(--white);
+    background:linear-gradient(160deg, var(--ec-forest) 0%, var(--ec-ocean) 100%);
+    overflow:hidden;
+
+}
+
+.journal-contact h2{
+
+    font-family:var(--display);
+    font-weight:600;
+    font-size:42px;
+    margin-bottom:18px;
+
+}
+
+.journal-contact p{
+
+    font-size:18px;
+    color:rgba(255,255,255,.85);
+    max-width:600px;
+    margin:0 auto 40px;
+    font-weight:300;
+
+}
+
+.journal-contact .btn{
+    background:var(--ec-coral);
+    border-color:var(--ec-coral);
+}
+
+.journal-contact .btn:hover{
+    background:var(--gold);
+    border-color:var(--gold);
+    color:var(--ec-forest);
+}
+
+@media(max-width:600px){
+
+    .journal-contact{ padding:100px 8% 90px; }
+    .journal-contact h2{ font-size:32px; }
+
+}
+
+/* ===================================================
+   FOOTER — GLASSMORPHISM "DERNIÈRE PAGE DU CARNET"
+   Remplace l'ancien .footer (défini dans base.css) sur
+   cette page. Signature propre à l'Est : une houle
+   océane en guise de crête (au lieu de la ligne de
+   crête canyon utilisée sur la page Tuléar), dans les
+   tons forêt / océan / corail du carnet.
+=================================================== */
+
+.footer-glass{
+
+    position:relative;
+    padding:150px 8% 0;
+    background:
+        radial-gradient(ellipse 900px 500px at 10% 0%, rgba(47,122,93,.22), transparent 60%),
+        radial-gradient(ellipse 900px 600px at 90% 100%, rgba(232,148,107,.18), transparent 55%),
+        linear-gradient(190deg, #142A1D 0%, var(--ec-forest) 45%, #0F2016 100%);
+    overflow:hidden;
+    isolation:isolate;
+
+}
+
+/* signature — houle océane, superposée aux panneaux de verre */
+
+.footer-swell{
+
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:90px;
+    z-index:1;
+
+}
+
+.footer-glass-container{
+
+    position:relative;
+    z-index:2;
+    max-width:1300px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1.3fr 1fr 1fr 1.1fr;
+    gap:22px;
+
+}
+
+.footer-glass-panel{
+
+    position:relative;
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(22px) saturate(140%);
+    -webkit-backdrop-filter:blur(22px) saturate(140%);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:20px;
+    padding:32px 28px;
+    box-shadow:
+        0 20px 44px rgba(0,0,0,.28),
+        inset 0 1px 0 rgba(255,255,255,.14);
+
+}
+
+.footer-brand h3{
+
+    font-family:var(--display);
+    font-weight:600;
+    font-style:italic;
+    font-size:22px;
+    color:var(--ec-mist);
+    margin-bottom:14px;
+
+}
+
+.footer-brand p{
+
+    font-size:14.5px;
+    line-height:1.75;
+    color:rgba(244,241,232,.62);
+    font-weight:300;
+    max-width:280px;
+    margin-bottom:26px;
+
+}
+
+.footer-social{
+    display:flex;
+    gap:10px;
+}
+
+.footer-social a{
+
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.14);
+    color:var(--ec-mist);
+    text-decoration:none;
+    transition:background .3s ease, border-color .3s ease, transform .3s ease;
+
+}
+
+.footer-social a:hover{
+    background:rgba(232,148,107,.2);
+    border-color:rgba(232,148,107,.5);
+    transform:translateY(-3px);
+}
+
+.footer-social svg{
+    width:16px;
+    height:16px;
+    fill:currentColor;
+}
+
+.footer-glass-panel h4{
+
+    font-family:var(--display);
+    font-weight:600;
+    font-style:italic;
+    font-size:15px;
+    letter-spacing:.4px;
+    color:#7FD4E0;
+    margin-bottom:20px;
+
+}
+
+.footer-glass-panel a,
+.footer-glass-panel .footer-static{
+
+    display:block;
+    font-size:14.5px;
+    color:rgba(244,241,232,.78);
+    text-decoration:none;
+    line-height:1;
+    margin-bottom:16px;
+    transition:color .25s ease, transform .25s ease;
+
+}
+
+.footer-glass-panel a:hover{
+    color:var(--ec-mist);
+    transform:translateX(4px);
+}
+
+.footer-glass-panel a:last-child,
+.footer-glass-panel .footer-static:last-child{
+    margin-bottom:0;
+}
+
+.footer-contact-panel p{
+
+    font-size:14px;
+    line-height:1.7;
+    color:rgba(244,241,232,.62);
+    font-weight:300;
+    margin-bottom:22px;
+
+}
+
+.footer-glass-btn{
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    width:100%;
+    padding:13px 18px;
+    border-radius:50px;
+    font-size:13.5px;
+    font-weight:500;
+    text-decoration:none;
+    margin-bottom:12px;
+    border:1px solid rgba(255,255,255,.16);
+    background:rgba(255,255,255,.06);
+    color:var(--ec-mist);
+    backdrop-filter:blur(6px);
+    transition:background .3s ease, border-color .3s ease, transform .3s ease;
+
+}
+
+.footer-glass-btn:last-child{ margin-bottom:0; }
+
+.footer-glass-btn.filled{
+    background:rgba(28,110,140,.3);
+    border-color:rgba(127,212,224,.5);
+}
+
+.footer-glass-btn:hover{
+    transform:translateY(-2px);
+    background:rgba(232,148,107,.22);
+    border-color:rgba(232,148,107,.55);
+}
+
+.footer-glass-btn svg{
+    width:15px;
+    height:15px;
+    fill:currentColor;
+}
+
+/* bandeau du bas */
+
+.footer-bottom-glass{
+
+    position:relative;
+    z-index:2;
+    max-width:1300px;
+    margin:56px auto 0;
+    padding:22px 6px 40px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+    border-top:1px solid rgba(255,255,255,.1);
+
+}
+
+.footer-bottom-glass p{
+    font-size:12.5px;
+    color:rgba(244,241,232,.45);
+    font-weight:300;
+    letter-spacing:.2px;
+}
+
+.footer-bottom-links{
+    display:flex;
+    gap:22px;
+}
+
+.footer-bottom-links a{
+    font-size:12.5px;
+    color:rgba(244,241,232,.45);
+    text-decoration:none;
+    transition:color .25s ease;
+}
+
+.footer-bottom-links a:hover{
+    color:var(--ec-coral);
+}
+
+@media(max-width:1000px){
+
+    .footer-glass-container{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .footer-brand{ grid-column:span 2; }
+
+}
+
+@media(max-width:600px){
+
+    .footer-glass{ padding:110px 6% 0; }
+
+    .footer-glass-container{
+        grid-template-columns:1fr;
+    }
+
+    .footer-brand{ grid-column:span 1; }
+
+    .footer-bottom-glass{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+}
+
+@media(prefers-reduced-motion: reduce){
+    .footer-social a, .footer-glass-btn, .footer-glass-panel a{ transition:none; }
+}

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Diego Suarez Madagascar | Ma'Tour Guide Madagascar</title>
+
+    <meta name="description"
+        content="Discover Diego Suarez (Antsiranana) with Ma'Tour Guide Madagascar: Emerald Sea, Ramena, Amber Mountain, Sugarloaf and the red Tsingy of Ankarana.">
+
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="diego-suarez.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Work+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- ==========================================
+     HEADER
+========================================== -->
+
+<header id="navbar">
+
+    <div class="logo">
+        Ma'Tour&nbsp;Guide <span>Madagascar</span>
+    </div>
+
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-burger" aria-label="Open menu">
+        <span></span>
+    </label>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+
+        <a href="#adventure">Adventure</a>
+
+        <a href="#contact">Contact</a>
+
+    </nav>
+
+</header>
+
+<!-- ==========================================
+     HERO — MER D'ÉMERAUDE
+========================================== -->
+
+<section class="diego-hero">
+
+    <div class="diego-hero-scrim"></div>
+
+    <div class="diego-hero-content">
+
+        <span class="eyebrow">Northern Madagascar &nbsp;·&nbsp; DIANA Region</span>
+
+        <h1>Discover Diego Suarez</h1>
+
+        <p class="diego-hero-trio">
+            <span class="word word-sea">Sea</span>
+            <span class="dot">·</span>
+            <span class="word word-mountains">Mountains</span>
+            <span class="dot">·</span>
+            <span class="word word-tsingy">Tsingy</span>
+        </p>
+
+        <p class="diego-hero-text">
+            Explore the North of Madagascar — a turquoise bay, rainforest peaks
+            and stone forests carved by wind and rain, all within reach of one
+            small town at the tip of the island.
+        </p>
+
+        <a href="#adventure" class="btn">Choose your adventure</a>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+     CHOOSE YOUR ADVENTURE — 3 TUILES
+========================================== -->
+
+<section class="adventure" id="adventure">
+
+    <div class="section-heading">
+
+        <span class="eyebrow">Three worlds, one destination</span>
+
+        <h2>Choose your adventure</h2>
+
+        <p>Diego Suarez is really three regions in one. Pick a world below and the destinations underneath will change.</p>
+
+    </div>
+
+    <div class="adventure-tiles">
+
+        <button type="button" class="adventure-tile" data-category="sea" style="background-image:url('images/diego/tile-sea.jpg')">
+            <span class="adventure-tile-scrim"></span>
+            <span class="adventure-tile-content">
+                <span class="adventure-tile-icon">🌊</span>
+                <span class="adventure-tile-title">Sea</span>
+                <span class="adventure-tile-tagline">The Emerald Sea &amp; the Vezo coast</span>
+            </span>
+        </button>
+
+        <button type="button" class="adventure-tile" data-category="mountains" style="background-image:url('images/diego/tile-mountains.jpg')">
+            <span class="adventure-tile-scrim"></span>
+            <span class="adventure-tile-content">
+                <span class="adventure-tile-icon">🌿</span>
+                <span class="adventure-tile-title">Mountains</span>
+                <span class="adventure-tile-tagline">Rainforest peaks above the bay</span>
+            </span>
+        </button>
+
+        <button type="button" class="adventure-tile" data-category="tsingy" style="background-image:url('images/diego/tile-tsingy.jpg')">
+            <span class="adventure-tile-scrim"></span>
+            <span class="adventure-tile-content">
+                <span class="adventure-tile-icon">🪨</span>
+                <span class="adventure-tile-title">Tsingy</span>
+                <span class="adventure-tile-tagline">Stone forests of the far north</span>
+            </span>
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+     ADVENTURE DETAILS — CARTES DYNAMIQUES
+========================================== -->
+
+<section class="adventure-details" id="adventure-details" data-theme="sea">
+
+    <div class="details-heading">
+        <h3 id="details-title">Emerald Sea &amp; Vezo Coast</h3>
+        <p id="details-subtitle">Ramena · Emerald Sea · Three Bays</p>
+    </div>
+
+    <!-- SEA -->
+    <div class="detail-set active" data-set="sea">
+
+        <article class="detail-card">
+            <img src="images/diego/ramena.jpg" alt="Ramena">
+            <div class="detail-card-body">
+                <span class="detail-badge">Fishing village</span>
+                <h4>Ramena</h4>
+                <p>A quiet Vezo-Antakarana fishing village on a long white-sand bay, twenty minutes from Diego — colourful pirogues, seafood shacks and views over Nosy Lonjo.</p>
+                <div class="detail-tags">
+                    <span>Fishing village</span>
+                    <span>White sand</span>
+                    <span>Sunsets</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="detail-card">
+            <img src="images/diego/emerald-sea.jpg" alt="Emerald Sea">
+            <div class="detail-card-body">
+                <span class="detail-badge">Boat trip</span>
+                <h4>Emerald Sea</h4>
+                <p>A shallow turquoise lagoon protected by sandbanks, reached by boat — some of the clearest water in the region for swimming and snorkelling.</p>
+                <div class="detail-tags">
+                    <span>Snorkelling</span>
+                    <span>Boat trip</span>
+                    <span>Turquoise lagoon</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="detail-card">
+            <img src="images/diego/three-bays.jpg" alt="Three Bays">
+            <div class="detail-card-body">
+                <span class="detail-badge">Wild coastline</span>
+                <h4>Three Bays</h4>
+                <p>A wild trio of bays north of Ramena, shaped by dunes and strong trade winds — a favourite for kitesurfers and travellers chasing empty beaches.</p>
+                <div class="detail-tags">
+                    <span>Kitesurfing</span>
+                    <span>Dunes</span>
+                    <span>Wild beaches</span>
+                </div>
+            </div>
+        </article>
+
+    </div>
+
+    <!-- MOUNTAINS -->
+    <div class="detail-set" data-set="mountains">
+
+        <article class="detail-card">
+            <img src="images/diego/amber-mountain.jpg" alt="Amber Mountain">
+            <div class="detail-card-body">
+                <span class="detail-badge">National park</span>
+                <h4>Amber Mountain</h4>
+                <p>A rainforest-covered volcano rising above the dry north, with crater lakes, waterfalls and a dense population of chameleons and lemurs.</p>
+                <div class="detail-tags">
+                    <span>Rainforest</span>
+                    <span>Waterfalls</span>
+                    <span>Chameleons</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="detail-card">
+            <img src="images/diego/sugarloaf.jpg" alt="Sugarloaf">
+            <div class="detail-card-body">
+                <span class="detail-badge">Panoramic hike</span>
+                <h4>Sugarloaf</h4>
+                <p>A granite dome overlooking the Bay of Diego Suarez, climbed for one of the best panoramic views of the coastline and the Emerald Sea.</p>
+                <div class="detail-tags">
+                    <span>Hiking</span>
+                    <span>Panoramic view</span>
+                    <span>Granite dome</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="detail-card">
+            <img src="images/diego/montagne-francais.jpg" alt="Montagne des Français">
+            <div class="detail-card-body">
+                <span class="detail-badge">Colonial history</span>
+                <h4>Montagne des Français</h4>
+                <p>A limestone ridge riddled with caves and old colonial fortifications, combining dry forest trails with sweeping views over the bay.</p>
+                <div class="detail-tags">
+                    <span>Caves</span>
+                    <span>Colonial history</span>
+                    <span>Viewpoint</span>
+                </div>
+            </div>
+        </article>
+
+    </div>
+
+    <!-- TSINGY -->
+    <div class="detail-set" data-set="tsingy">
+
+        <article class="detail-card">
+            <img src="images/diego/red-tsingy.jpg" alt="Red Tsingy">
+            <div class="detail-card-body">
+                <span class="detail-badge">Sunset spot</span>
+                <h4>Red Tsingy</h4>
+                <p>Needle-like formations of red laterite, carved by rain and wind over centuries — most striking at sunset when the rock glows orange.</p>
+                <div class="detail-tags">
+                    <span>Sunset</span>
+                    <span>Erosion landscape</span>
+                    <span>Photography</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="detail-card">
+            <img src="images/diego/ankarana.jpg" alt="Ankarana">
+            <div class="detail-card-body">
+                <span class="detail-badge">Special reserve</span>
+                <h4>Ankarana</h4>
+                <p>A vast limestone plateau of grey tsingy, deep canyons and underground rivers, home to caves, bats and several species of lemur.</p>
+                <div class="detail-tags">
+                    <span>Lemurs</span>
+                    <span>Caves</span>
+                    <span>Tsingy</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="detail-card">
+            <img src="images/diego/analamerana.jpg" alt="Analamerana">
+            <div class="detail-card-body">
+                <span class="detail-badge">Off the beaten path</span>
+                <h4>Analamerana</h4>
+                <p>A lesser-known reserve bordering Ankarana, with its own tsingy formations and dry forest trails — a quieter alternative off the main circuit.</p>
+                <div class="detail-tags">
+                    <span>Dry forest</span>
+                    <span>Off the beaten path</span>
+                </div>
+            </div>
+        </article>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+     CONTACT
+========================================== -->
+
+<section class="diego-contact" id="contact">
+
+    <span class="eyebrow eyebrow-light">Let's plan your trip</span>
+
+    <h2>Ready to explore the North?</h2>
+
+    <p>
+        Contact Ma'Tour Guide Madagascar and let's build your Diego Suarez
+        itinerary — sea, mountains or tsingy.
+    </p>
+
+    <div class="contact-buttons">
+
+        <a href="https://wa.me/261342278490" class="btn">Contact on WhatsApp</a>
+
+        <a href="mailto:matourguidemadagascar@gmail.com" class="btn btn-outline">Send an email</a>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+     FOOTER — GLASSMORPHISM
+========================================== -->
+
+<footer class="footer-glass-diego">
+
+    <svg class="footer-ridge-diego" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,90 L0,55 L120,35 L240,60 L360,30 L480,58 L600,32 L720,56 L840,28 L960,54 L1080,30 L1200,52 L1320,34 L1440,50"
+              fill="none" stroke="url(#ridgeGradDiego)" stroke-width="2" stroke-linecap="round"/>
+        <defs>
+            <linearGradient id="ridgeGradDiego" x1="0" y1="0" x2="1440" y2="0">
+                <stop offset="0%" stop-color="#1C8CA8" stop-opacity="0.7"/>
+                <stop offset="50%" stop-color="#3B6E44" stop-opacity="0.55"/>
+                <stop offset="100%" stop-color="#C1662E" stop-opacity="0.6"/>
+            </linearGradient>
+        </defs>
+    </svg>
+
+    <div class="footer-glass-container-diego">
+
+        <div class="footer-glass-panel-diego footer-brand-diego">
+            <h3>Ma'Tour&nbsp;Guide Madagascar</h3>
+            <p>Your trusted local guide for authentic adventures throughout Madagascar — from the Emerald Sea to the tsingy of the far north.</p>
+            <div class="footer-social-diego">
+                <a href="https://wa.me/261342278490" aria-label="WhatsApp">
+                    <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.6.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.5-.9-.8-1.4-1.8-1.6-2.1-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.6-1.5-.8-2-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 5 4.3.7.3 1.2.5 1.7.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.6 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.2-.4-4.5-1.3l-.3-.2-3.4.9.9-3.3-.2-.3C3.4 14 3 12.5 3 11 3 6.6 6.6 3 11 3s8 3.6 8 8-3.6 8-8 8z"/></svg>
+                </a>
+                <a href="mailto:matourguidemadagascar@gmail.com" aria-label="Email">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-glass-panel-diego footer-nav-diego">
+            <h4>Quick Links</h4>
+            <a href="index.html">Home</a>
+            <a href="#adventure">Adventure</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+        <div class="footer-glass-panel-diego footer-destinations-diego">
+            <h4>Destinations</h4>
+            <span class="footer-static-diego">Emerald Sea &amp; Ramena</span>
+            <span class="footer-static-diego">Amber Mountain</span>
+            <span class="footer-static-diego">Red Tsingy &amp; Ankarana</span>
+        </div>
+
+        <div class="footer-glass-panel-diego footer-contact-panel-diego">
+            <h4>Plan your trip</h4>
+            <p>Let's build your Diego Suarez itinerary together.</p>
+            <a href="https://wa.me/261342278490" class="footer-glass-btn-diego filled">
+                <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.6.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.5-.9-.8-1.4-1.8-1.6-2.1-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.6-1.5-.8-2-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 5 4.3.7.3 1.2.5 1.7.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.6 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.2-.4-4.5-1.3l-.3-.2-3.4.9.9-3.3-.2-.3C3.4 14 3 12.5 3 11 3 6.6 6.6 3 11 3s8 3.6 8 8-3.6 8-8 8z"/></svg>
+                WhatsApp
+            </a>
+            <a href="mailto:matourguidemadagascar@gmail.com" class="footer-glass-btn-diego">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                Send an email
+            </a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom-glass-diego">
+        <p>© 2026 Ma'Tour Guide Madagascar. All Rights Reserved.</p>
+        <div class="footer-bottom-links-diego">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+        </div>
+    </div>
+
+</footer>
+
+<script>
+    // Header background on scroll
+    const nav = document.getElementById('navbar');
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+
+    // Close mobile menu when a link is clicked
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('nav-toggle').checked = false;
+        });
+    });
+
+    // ==========================================
+    // CHOOSE YOUR ADVENTURE — bascule des cartes
+    // ==========================================
+    (function () {
+
+        const tiles = document.querySelectorAll('.adventure-tile');
+        const detailSets = document.querySelectorAll('.detail-set');
+        const detailsSection = document.getElementById('adventure-details');
+        const detailsTitle = document.getElementById('details-title');
+        const detailsSubtitle = document.getElementById('details-subtitle');
+
+        const meta = {
+            sea: {
+                title: "Emerald Sea &amp; Vezo Coast",
+                subtitle: "Ramena · Emerald Sea · Three Bays"
+            },
+            mountains: {
+                title: "Forests &amp; Peaks",
+                subtitle: "Amber Mountain · Sugarloaf · Montagne des Français"
+            },
+            tsingy: {
+                title: "Stone Forests",
+                subtitle: "Red Tsingy · Ankarana · Analamerana"
+            }
+        };
+
+        function showSet(category, animate) {
+
+            const current = document.querySelector('.detail-set.active');
+            const next = document.querySelector('.detail-set[data-set="' + category + '"]');
+
+            if (!next || current === next) return;
+
+            detailsSection.dataset.theme = category;
+            detailsTitle.innerHTML = meta[category].title;
+            detailsSubtitle.textContent = meta[category].subtitle;
+
+            if (!animate || !current) {
+                detailSets.forEach(s => { s.classList.remove('active', 'show'); });
+                next.classList.add('active');
+                requestAnimationFrame(() => requestAnimationFrame(() => next.classList.add('show')));
+                return;
+            }
+
+            current.classList.remove('show');
+
+            window.setTimeout(() => {
+                current.classList.remove('active');
+                next.classList.add('active');
+                requestAnimationFrame(() => requestAnimationFrame(() => next.classList.add('show')));
+            }, 320);
+
+        }
+
+        tiles.forEach(tile => {
+            tile.addEventListener('click', () => {
+                const category = tile.dataset.category;
+                if (tile.classList.contains('active')) return;
+                tiles.forEach(t => t.classList.toggle('active', t === tile));
+                showSet(category, true);
+                document.getElementById('adventure-details').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // état initial
+        tiles[0].classList.add('active');
+        document.querySelector('.detail-set[data-set="sea"]').classList.add('show');
+
+    })();
+</script>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

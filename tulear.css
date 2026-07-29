@@ -1,0 +1,704 @@
+/* ===================================================
+   TULÉAR — Ma'Tour Guide Madagascar
+   Direction : "Canyon & Côte Vezo" — mur en mosaïque
+   (bento grid), très différent de la grille de cartes
+   de Nosy Be et de la timeline alternée de Morondava.
+
+   Requires base.css to be loaded first (reset,
+   typography, header, nav, buttons live there).
+=================================================== */
+
+:root{
+
+    --tul-ink:       #2E1B12;   /* brun canyon profond, utilisé pour les overlays        */
+    --tul-clay:      #A64B2A;   /* terracotta rocheux — accent principal                 */
+    --tul-gold:      #D9A441;   /* lumière de fin de journée sur le grès                 */
+    --tul-turquoise: #3FA9A0;   /* lagon d'Anakao / Nosy Ve — touche rare et ciblée      */
+    --tul-sand:      #F1E4CC;   /* sable du Sud — fond des sections claires              */
+
+}
+
+/* ===============================
+HERO — bord en crête rocheuse
+=============================== */
+
+.tulear-hero{
+
+    position:relative;
+    height:100vh;
+    min-height:620px;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+    background:url('images/tulear/hero.jpg') center/cover no-repeat;
+
+}
+
+.tulear-hero-scrim{
+
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(46,27,18,.25) 0%, rgba(46,27,18,.35) 55%, rgba(46,27,18,.8) 100%);
+    z-index:1;
+
+}
+
+.tulear-hero-content{
+
+    position:relative;
+    z-index:2;
+    color:var(--white);
+    padding:0 8% 130px;
+    max-width:760px;
+
+}
+
+.tulear-hero-content .eyebrow{
+    color:var(--tul-gold);
+}
+
+.tulear-hero-content h1{
+
+    font-family:var(--display);
+    font-weight:600;
+    font-size:64px;
+    line-height:1.1;
+    margin:18px 0 22px;
+
+}
+
+.tulear-hero-content p{
+
+    font-size:19px;
+    font-weight:300;
+    color:rgba(255,255,255,.9);
+    margin-bottom:32px;
+    max-width:560px;
+
+}
+
+.tulear-hero-tags{
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:40px;
+
+}
+
+.tulear-hero-tags span{
+
+    padding:9px 18px;
+    border:1px solid rgba(255,255,255,.35);
+    border-radius:50px;
+    font-size:13.5px;
+    background:rgba(255,255,255,.08);
+
+}
+
+.tulear-hero-content .btn{
+    background:var(--tul-clay);
+    border-color:var(--tul-clay);
+}
+
+.tulear-hero-content .btn:hover{
+    background:var(--tul-gold);
+    border-color:var(--tul-gold);
+}
+
+/* découpe façon crête de canyon, en bas du hero */
+
+.canyon-edge{
+
+    position:absolute;
+    left:0;
+    bottom:-1px;
+    width:100%;
+    height:60px;
+    z-index:3;
+    display:block;
+
+}
+
+@media(max-width:900px){
+
+    .tulear-hero-content h1{ font-size:44px; }
+    .tulear-hero-content{ padding:0 7% 90px; }
+
+}
+
+@media(max-width:600px){
+
+    .tulear-hero-content h1{ font-size:34px; }
+    .tulear-hero-content p{ font-size:16.5px; }
+
+}
+
+/* ===============================
+INTRODUCTION
+=============================== */
+
+.tulear-intro{
+
+    padding:120px 12% 100px;
+    text-align:center;
+    background:var(--tul-sand);
+
+}
+
+.tulear-intro .eyebrow{
+    color:var(--tul-clay);
+}
+
+.tulear-intro h2{
+
+    font-family:var(--display);
+    font-weight:600;
+    font-size:44px;
+    color:var(--tul-ink);
+    margin:16px auto 26px;
+    max-width:760px;
+    line-height:1.25;
+
+}
+
+.tulear-intro p{
+
+    font-size:19px;
+    line-height:1.9;
+    max-width:780px;
+    margin:auto;
+    color:var(--bark-soft);
+
+}
+
+/* ===============================
+MOSAÏQUE (bento grid)
+=============================== */
+
+.mosaic{
+
+    padding:120px 8% 130px;
+    background:var(--white);
+
+}
+
+.mosaic .section-heading{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.mosaic .section-heading h2{
+
+    font-family:var(--display);
+    font-weight:600;
+    font-size:44px;
+    color:var(--tul-ink);
+    margin-top:14px;
+
+}
+
+.mosaic .section-heading p{
+    max-width:560px;
+    margin:16px auto 0;
+    color:var(--bark-soft);
+    font-size:16px;
+    line-height:1.7;
+}
+
+.mosaic-grid{
+
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    grid-auto-rows:220px;
+    grid-auto-flow:dense;
+    gap:22px;
+    max-width:1300px;
+    margin:0 auto;
+
+}
+
+.mosaic-tile{
+
+    position:relative;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 16px 36px rgba(46,27,18,.14);
+    transition:transform .45s ease, box-shadow .45s ease;
+
+}
+
+.mosaic-tile:hover{
+    transform:translateY(-6px);
+    box-shadow:0 24px 48px rgba(46,27,18,.22);
+}
+
+.mosaic-tile.large{
+    grid-column:span 2;
+    grid-row:span 2;
+}
+
+.mosaic-tile.wide{
+    grid-column:span 2;
+}
+
+.mosaic-tile img{
+
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform .7s ease;
+
+}
+
+.mosaic-tile:hover img{
+    transform:scale(1.07);
+}
+
+.mosaic-tile::after{
+
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, transparent 35%, rgba(46,27,18,.85) 100%);
+
+}
+
+.mosaic-tile.turquoise::after{
+    background:linear-gradient(180deg, transparent 30%, rgba(20,58,55,.85) 100%);
+}
+
+.mosaic-badge{
+
+    position:absolute;
+    top:16px;
+    left:16px;
+    z-index:3;
+    padding:7px 15px;
+    border-radius:30px;
+    font-size:11.5px;
+    font-weight:600;
+    letter-spacing:.6px;
+    text-transform:uppercase;
+    color:var(--white);
+    background:rgba(46,27,18,.55);
+    backdrop-filter:blur(3px);
+
+}
+
+.mosaic-info{
+
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index:3;
+    padding:22px;
+    color:var(--white);
+
+}
+
+.mosaic-info h3{
+
+    font-family:var(--display);
+    font-weight:600;
+    font-size:23px;
+    margin-bottom:8px;
+
+}
+
+.mosaic-tile.large .mosaic-info h3{
+    font-size:28px;
+}
+
+.mosaic-info p{
+
+    font-size:14px;
+    line-height:1.6;
+    color:rgba(255,255,255,.88);
+    margin-bottom:12px;
+    max-width:420px;
+
+}
+
+.mosaic-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+}
+
+.mosaic-tags span{
+
+    padding:5px 12px;
+    border-radius:30px;
+    background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.3);
+    font-size:11.5px;
+    font-weight:500;
+
+}
+
+@media(max-width:900px){
+
+    .mosaic-grid{
+        grid-template-columns:repeat(2, 1fr);
+    }
+
+    .mosaic-tile.large,
+    .mosaic-tile.wide{
+        grid-column:span 2;
+    }
+
+    .mosaic-tile.large{
+        grid-row:span 2;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .mosaic{ padding:90px 6% 100px; }
+
+    .mosaic-grid{
+        grid-template-columns:1fr;
+        grid-auto-rows:260px;
+    }
+
+    .mosaic-tile,
+    .mosaic-tile.large,
+    .mosaic-tile.wide{
+        grid-column:span 1;
+        grid-row:span 1;
+    }
+
+    .mosaic .section-heading h2{ font-size:32px; }
+
+}
+
+/* ===============================
+CONTACT
+=============================== */
+
+.tulear-contact{
+
+    position:relative;
+    padding:150px 8% 120px;
+    text-align:center;
+    color:var(--white);
+    background:linear-gradient(160deg, var(--tul-ink) 0%, var(--tul-clay) 100%);
+    overflow:hidden;
+
+}
+
+.tulear-contact h2{
+
+    font-family:var(--display);
+    font-weight:600;
+    font-size:42px;
+    margin-bottom:18px;
+
+}
+
+.tulear-contact p{
+
+    font-size:18px;
+    color:rgba(255,255,255,.85);
+    max-width:600px;
+    margin:0 auto 40px;
+    font-weight:300;
+
+}
+
+.tulear-contact .btn{
+    background:var(--tul-turquoise);
+    border-color:var(--tul-turquoise);
+}
+
+.tulear-contact .btn:hover{
+    background:var(--tul-gold);
+    border-color:var(--tul-gold);
+    color:var(--tul-ink);
+}
+
+@media(max-width:600px){
+
+    .tulear-contact{ padding:100px 8% 90px; }
+    .tulear-contact h2{ font-size:32px; }
+
+}
+
+@media (prefers-reduced-motion: reduce){
+    .mosaic-tile img{ transition:none; }
+}
+
+/* ===================================================
+   FOOTER — GLASSMORPHISM "CANYON AU CRÉPUSCULE"
+   Remplace l'ancien .footer (défini dans base.css) sur
+   cette page. Réutilise les tokens --tul-* ci-dessus.
+=================================================== */
+
+.footer-glass{
+
+    position:relative;
+    padding:150px 8% 0;
+    background:
+        radial-gradient(ellipse 900px 500px at 12% 0%, rgba(217,164,65,.16), transparent 60%),
+        radial-gradient(ellipse 900px 600px at 88% 100%, rgba(63,169,160,.20), transparent 55%),
+        linear-gradient(190deg, #241610 0%, var(--tul-ink) 45%, #1a100b 100%);
+    overflow:hidden;
+    isolation:isolate;
+
+}
+
+/* signature — ligne de crête au crépuscule, au-dessus du verre */
+
+.footer-ridge{
+
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:90px;
+    z-index:1;
+
+}
+
+.footer-glass-container{
+
+    position:relative;
+    z-index:2;
+    max-width:1300px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1.3fr 1fr 1fr 1.1fr;
+    gap:22px;
+
+}
+
+.footer-glass-panel{
+
+    position:relative;
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(22px) saturate(140%);
+    -webkit-backdrop-filter:blur(22px) saturate(140%);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:20px;
+    padding:32px 28px;
+    box-shadow:
+        0 20px 44px rgba(0,0,0,.28),
+        inset 0 1px 0 rgba(255,255,255,.14);
+
+}
+
+.footer-brand h3{
+
+    font-family:var(--display);
+    font-weight:600;
+    font-size:22px;
+    color:var(--tul-sand);
+    margin-bottom:14px;
+
+}
+
+.footer-brand p{
+
+    font-size:14.5px;
+    line-height:1.75;
+    color:rgba(241,228,204,.62);
+    font-weight:300;
+    max-width:280px;
+    margin-bottom:26px;
+
+}
+
+.footer-social{
+    display:flex;
+    gap:10px;
+}
+
+.footer-social a{
+
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.14);
+    color:var(--tul-sand);
+    text-decoration:none;
+    transition:background .3s ease, border-color .3s ease, transform .3s ease;
+
+}
+
+.footer-social a:hover{
+    background:rgba(217,164,65,.18);
+    border-color:rgba(217,164,65,.5);
+    transform:translateY(-3px);
+}
+
+.footer-social svg{
+    width:16px;
+    height:16px;
+    fill:currentColor;
+}
+
+.footer-glass-panel h4{
+
+    font-family:var(--display);
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:.4px;
+    color:var(--tul-gold);
+    text-transform:uppercase;
+    margin-bottom:20px;
+
+}
+
+.footer-glass-panel a,
+.footer-glass-panel .footer-static{
+
+    display:block;
+    font-size:14.5px;
+    color:rgba(241,228,204,.78);
+    text-decoration:none;
+    line-height:1;
+    margin-bottom:16px;
+    transition:color .25s ease, transform .25s ease;
+
+}
+
+.footer-glass-panel a:hover{
+    color:var(--tul-sand);
+    transform:translateX(4px);
+}
+
+.footer-glass-panel a:last-child,
+.footer-glass-panel .footer-static:last-child{
+    margin-bottom:0;
+}
+
+.footer-contact-panel p{
+
+    font-size:14px;
+    line-height:1.7;
+    color:rgba(241,228,204,.62);
+    font-weight:300;
+    margin-bottom:22px;
+
+}
+
+.footer-glass-btn{
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    width:100%;
+    padding:13px 18px;
+    border-radius:50px;
+    font-size:13.5px;
+    font-weight:500;
+    text-decoration:none;
+    margin-bottom:12px;
+    border:1px solid rgba(255,255,255,.16);
+    background:rgba(255,255,255,.06);
+    color:var(--tul-sand);
+    backdrop-filter:blur(6px);
+    transition:background .3s ease, border-color .3s ease, transform .3s ease;
+
+}
+
+.footer-glass-btn:last-child{ margin-bottom:0; }
+
+.footer-glass-btn.filled{
+    background:rgba(63,169,160,.22);
+    border-color:rgba(63,169,160,.5);
+}
+
+.footer-glass-btn:hover{
+    transform:translateY(-2px);
+    background:rgba(217,164,65,.2);
+    border-color:rgba(217,164,65,.55);
+}
+
+.footer-glass-btn svg{
+    width:15px;
+    height:15px;
+    fill:currentColor;
+}
+
+/* bandeau du bas */
+
+.footer-bottom-glass{
+
+    position:relative;
+    z-index:2;
+    max-width:1300px;
+    margin:56px auto 0;
+    padding:22px 6px 40px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+    border-top:1px solid rgba(255,255,255,.1);
+
+}
+
+.footer-bottom-glass p{
+    font-size:12.5px;
+    color:rgba(241,228,204,.45);
+    font-weight:300;
+    letter-spacing:.2px;
+}
+
+.footer-bottom-links{
+    display:flex;
+    gap:22px;
+}
+
+.footer-bottom-links a{
+    font-size:12.5px;
+    color:rgba(241,228,204,.45);
+    text-decoration:none;
+    transition:color .25s ease;
+}
+
+.footer-bottom-links a:hover{
+    color:var(--tul-gold);
+}
+
+@media(max-width:1000px){
+
+    .footer-glass-container{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .footer-brand{ grid-column:span 2; }
+
+}
+
+@media(max-width:600px){
+
+    .footer-glass{ padding:110px 6% 0; }
+
+    .footer-glass-container{
+        grid-template-columns:1fr;
+    }
+
+    .footer-brand{ grid-column:span 1; }
+
+    .footer-bottom-glass{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+}
+
+@media(prefers-reduced-motion: reduce){
+    .footer-social a, .footer-glass-btn, .footer-glass-panel a{ transition:none; }
+}

@@ -1,0 +1,861 @@
+/* ===================================================
+   MORONDAVA — Ma'Tour Guide Madagascar
+   Direction: "Land of Giants" — dusk-to-ember sunset
+   over the Avenue of the Baobabs.
+=================================================== */
+
+/* ==========================================
+   Requires base.css to be loaded first (reset,
+   typography, header, nav, buttons live there).
+   Only Morondava-specific tokens below.
+========================================== */
+
+:root{
+
+    --sage:  #5C6E52;   /* dry-forest green, used sparingly on season cards */
+
+    --sunset: linear-gradient(180deg, var(--dusk) 0%, var(--dusk-2) 40%, var(--ember) 78%, var(--gold) 100%);
+
+}
+
+/* ===============================
+HERO
+=============================== */
+
+.morondava-hero{
+
+    min-height:100vh;
+    display:grid;
+    grid-template-columns:1.15fr 1fr;
+
+}
+
+.hero-left{
+
+    position:relative;
+    background:var(--sunset);
+    color:var(--white);
+    display:flex;
+    align-items:flex-end;
+    padding:0;
+    overflow:hidden;
+
+}
+
+.hero-baobabs{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-around;
+    padding:0 6% 0;
+    color:rgba(15,10,20,.55);
+    pointer-events:none;
+}
+
+.hb{
+    width:110px;
+    height:auto;
+    flex-shrink:0;
+}
+
+.hero-baobabs .hb-1{ width:70px; opacity:.5; transform:translateY(6px); }
+.hero-baobabs .hb-2{ width:130px; opacity:.85; }
+.hero-baobabs .hb-3{ width:95px; opacity:.65; transform:translateY(10px); }
+.hero-baobabs .hb-4{ width:150px; opacity:.95; }
+.hero-baobabs .hb-5{ width:80px; opacity:.55; transform:translateY(8px); }
+
+.hero-copy{
+
+    position:relative;
+    z-index:2;
+    padding:150px 90px 90px;
+
+}
+
+.hero-top{
+
+    color:var(--gold);
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:12.5px;
+    font-weight:600;
+    margin-bottom:22px;
+    display:inline-block;
+
+}
+
+.hero-left h1{
+
+    font-family:var(--display);
+    font-weight:600;
+    font-size:68px;
+    line-height:1.08;
+    margin-bottom:26px;
+    letter-spacing:-.5px;
+
+}
+
+.hero-left h1 em{
+
+    display:block;
+    font-style:italic;
+    font-weight:500;
+    color:var(--gold);
+
+}
+
+.hero-left p{
+
+    font-size:18px;
+    line-height:1.8;
+    margin-bottom:32px;
+    max-width:480px;
+    color:rgba(255,255,255,.88);
+
+}
+
+.hero-tags{
+
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:36px;
+
+}
+
+.hero-tags span{
+
+    padding:9px 18px;
+    border:1px solid rgba(255,255,255,.3);
+    border-radius:50px;
+    font-size:13.5px;
+    background:rgba(255,255,255,.06);
+
+}
+
+.hero-actions{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-bottom:50px;
+}
+
+.hero-right{
+
+    position:relative;
+    overflow:hidden;
+
+}
+
+.hero-right img{
+
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:8s;
+
+}
+
+.hero-right:hover img{
+    transform:scale(1.06);
+}
+
+.hero-frame-label{
+    position:absolute;
+    right:30px;
+    bottom:30px;
+    background:rgba(31,24,48,.72);
+    backdrop-filter:blur(6px);
+    color:var(--white);
+    font-family:var(--display);
+    font-style:italic;
+    font-size:15px;
+    padding:12px 22px;
+    border-radius:50px;
+    border:1px solid rgba(255,255,255,.25);
+}
+
+/* ===============================
+HERO INFO STATS
+=============================== */
+
+.hero-info{
+
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+
+}
+
+.hero-info div{
+
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,.14);
+    padding:16px 22px;
+    border-radius:16px;
+    min-width:120px;
+
+}
+
+.hero-info strong{
+
+    display:block;
+    font-family:var(--display);
+    font-size:24px;
+    color:var(--white);
+
+}
+
+.hero-info strong span{
+    font-size:15px;
+    opacity:.7;
+    font-weight:400;
+}
+
+.hero-info small{
+    color:rgba(255,255,255,.7);
+    font-size:12.5px;
+}
+
+/* ===============================
+RESPONSIVE HERO
+=============================== */
+
+@media(max-width:1000px){
+
+    .morondava-hero{
+        grid-template-columns:1fr;
+    }
+
+    .hero-copy{
+        padding:150px 40px 70px;
+    }
+
+    .hero-left h1{
+        font-size:46px;
+    }
+
+    .hero-right{
+        height:420px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .hero-copy{
+        padding:140px 24px 60px;
+    }
+
+    .hero-left h1{
+        font-size:38px;
+    }
+
+    .hero-left p{
+        font-size:16px;
+    }
+
+    .hero-baobabs{
+        opacity:.5;
+    }
+
+}
+
+/* ==========================================
+   INTRODUCTION
+========================================== */
+
+.morondava-intro{
+
+    position:relative;
+    padding:130px 10% 110px;
+    background:var(--sand);
+    text-align:center;
+
+}
+
+.intro-watermark{
+
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:220px;
+    height:auto;
+    color:rgba(59,42,32,.05);
+    pointer-events:none;
+
+}
+
+.intro-title{
+    position:relative;
+    z-index:2;
+}
+
+.intro-title h2{
+
+    font-family:var(--display);
+    font-weight:600;
+    font-size:46px;
+    color:var(--bark);
+    margin:18px auto 0;
+    max-width:780px;
+    line-height:1.2;
+
+}
+
+.intro-text{
+
+    max-width:780px;
+    margin:34px auto 0;
+    position:relative;
+    z-index:2;
+
+}
+
+.intro-text p{
+    font-size:19px;
+    line-height:1.9;
+}
+
+/* ==========================================
+   SECTION TITLE
+========================================== */
+
+.section-heading{
+    text-align:center;
+    margin-bottom:80px;
+}
+
+.section-heading h2{
+
+    font-family:var(--display);
+    font-weight:600;
+    font-size:46px;
+    margin-top:16px;
+    color:var(--bark);
+
+}
+
+.section-sub{
+    max-width:520px;
+    margin:16px auto 0;
+    font-size:16px;
+    line-height:1.7;
+}
+
+/* ==========================================
+   ROADTRIP
+========================================== */
+
+.roadtrip{
+    background:var(--white);
+    padding:130px 8%;
+    position:relative;
+}
+
+.timeline{
+    position:relative;
+    max-width:1200px;
+    margin:auto;
+}
+
+.timeline::before{
+
+    content:"";
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    width:3px;
+    height:100%;
+    background-image:linear-gradient(var(--gold), var(--ember));
+    background-size:3px 18px;
+    background-repeat:repeat-y;
+    -webkit-mask-image:repeating-linear-gradient(to bottom, black 0 10px, transparent 10px 18px);
+    mask-image:repeating-linear-gradient(to bottom, black 0 10px, transparent 10px 18px);
+
+}
+
+.timeline-item{
+    width:50%;
+    position:relative;
+    margin-bottom:100px;
+}
+
+.timeline-item:last-child{
+    margin-bottom:0;
+}
+
+.timeline-item.left{
+    padding-right:64px;
+}
+
+.timeline-item.right{
+    margin-left:50%;
+    padding-left:64px;
+}
+
+.timeline-marker{
+
+    position:absolute;
+    top:14px;
+    width:72px;
+    height:72px;
+    border-radius:50%;
+    background:var(--sand);
+    border:2px solid var(--gold);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    box-shadow:var(--shadow-soft);
+    z-index:5;
+    color:var(--ember);
+
+}
+
+.marker-icon{
+    width:24px;
+    height:24px;
+    margin-bottom:1px;
+}
+
+.timeline-marker span{
+    font-family:var(--display);
+    font-style:italic;
+    font-size:13px;
+    color:var(--bark);
+}
+
+.timeline-item.left .timeline-marker{
+    right:-36px;
+}
+
+.timeline-item.right .timeline-marker{
+    left:-36px;
+}
+
+/* ==========================================
+   CARD
+========================================== */
+
+.timeline-card{
+
+    background:var(--white);
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    transition:.45s;
+    position:relative;
+    border:1px solid rgba(59,42,32,.06);
+
+}
+
+.timeline-card:hover{
+    transform:translateY(-10px);
+}
+
+.card-media{
+    position:relative;
+    overflow:hidden;
+    height:300px;
+}
+
+.card-media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.8s;
+    filter:saturate(1.02);
+}
+
+.timeline-card:hover .card-media img{
+    transform:scale(1.08);
+}
+
+.card-media::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, transparent 55%, rgba(31,24,48,.55) 100%);
+}
+
+.badge{
+
+    position:absolute;
+    margin:18px;
+    background:rgba(31,24,48,.78);
+    backdrop-filter:blur(4px);
+    color:var(--white);
+    padding:9px 17px;
+    border-radius:40px;
+    font-size:11.5px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    z-index:3;
+
+}
+
+.card-content{
+    padding:34px;
+}
+
+.card-content h3{
+
+    font-family:var(--display);
+    font-weight:600;
+    font-size:29px;
+    color:var(--bark);
+    margin-bottom:14px;
+
+}
+
+.card-content p{
+    line-height:1.85;
+    color:var(--bark-soft);
+    margin-bottom:26px;
+    font-size:15.5px;
+}
+
+/* ==========================================
+   TAGS
+========================================== */
+
+.card-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.card-tags span{
+
+    background:var(--sand);
+    padding:8px 16px;
+    border-radius:40px;
+    color:var(--bark);
+    font-size:13px;
+    font-weight:600;
+
+}
+
+/* ==========================================
+   RESPONSIVE TIMELINE
+========================================== */
+
+@media(max-width:950px){
+
+    .timeline::before{
+        left:34px;
+    }
+
+    .timeline-item{
+        width:100%;
+        margin-left:0;
+        padding-left:96px !important;
+        padding-right:0 !important;
+    }
+
+    .timeline-marker{
+        left:0 !important;
+        right:auto !important;
+    }
+
+}
+
+/* ==========================================
+   BEST TIME
+========================================== */
+
+.best-season{
+    padding:130px 8%;
+    background:var(--sand-deep);
+}
+
+.season-grid{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:28px;
+    max-width:1200px;
+    margin:auto;
+
+}
+
+.season-card{
+
+    background:var(--white);
+    padding:42px 30px;
+    border-radius:18px;
+    box-shadow:var(--shadow-soft);
+    transition:.4s;
+    text-align:left;
+    border-top:3px solid var(--gold);
+
+}
+
+.season-card:nth-child(2){ border-top-color:var(--sage); }
+.season-card:nth-child(3){ border-top-color:var(--ember); }
+.season-card:nth-child(4){ border-top-color:var(--dusk-2); }
+
+.season-card:hover{
+    transform:translateY(-10px);
+    box-shadow:var(--shadow);
+}
+
+.season-mark{
+    display:inline-block;
+    font-size:24px;
+    color:var(--ember);
+    margin-bottom:18px;
+}
+
+.season-card h3{
+
+    font-family:var(--display);
+    font-weight:600;
+    font-size:24px;
+    color:var(--bark);
+    margin-bottom:8px;
+
+}
+
+.season-card h4{
+    color:var(--ember);
+    font-size:14px;
+    font-weight:600;
+    margin-bottom:16px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.season-card p{
+    line-height:1.8;
+    font-size:15px;
+}
+
+/* ==========================================
+   CTA
+========================================== */
+
+.cta{
+
+    position:relative;
+    background:var(--sunset);
+    color:var(--white);
+    text-align:center;
+    padding:130px 8%;
+    overflow:hidden;
+
+}
+
+.cta-baobabs{
+    position:absolute;
+    inset:auto 0 0 0;
+    height:160px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-around;
+    padding:0 4%;
+    color:rgba(15,10,20,.4);
+    pointer-events:none;
+}
+
+.cta-baobabs .hb-1{ width:90px; opacity:.55; }
+.cta-baobabs .hb-2{ width:150px; opacity:.85; }
+.cta-baobabs .hb-3{ width:110px; opacity:.65; }
+.cta-baobabs .hb-4{ width:70px; opacity:.5; }
+
+.cta-content{
+    position:relative;
+    z-index:2;
+}
+
+.cta h2{
+
+    font-family:var(--display);
+    font-weight:600;
+    font-style:italic;
+    font-size:50px;
+    margin:16px 0 22px;
+
+}
+
+.cta p{
+    max-width:620px;
+    margin:0 auto 40px;
+    line-height:1.8;
+    font-size:18px;
+    color:rgba(255,255,255,.85);
+}
+
+/* ==========================================
+   CONTACT
+========================================== */
+
+.contact{
+    padding:130px 8%;
+    background:var(--sand);
+    text-align:center;
+}
+
+.contact h2{
+
+    font-family:var(--display);
+    font-weight:600;
+    font-size:44px;
+    color:var(--bark);
+    margin:18px auto;
+    max-width:740px;
+    line-height:1.25;
+
+}
+
+.contact p{
+    max-width:700px;
+    margin:0 auto 42px;
+    line-height:1.9;
+    font-size:16.5px;
+}
+
+.contact-buttons{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+.footer{
+    background:var(--dusk);
+    color:var(--white);
+}
+
+.footer-container{
+
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:60px;
+    padding:80px 8%;
+    max-width:1300px;
+    margin:auto;
+
+}
+
+.footer h3{
+
+    font-family:var(--display);
+    font-style:italic;
+    font-weight:600;
+    font-size:27px;
+    margin-bottom:18px;
+
+}
+
+.footer h4{
+    margin-bottom:20px;
+    color:var(--gold);
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+}
+
+.footer a{
+    display:block;
+    color:rgba(255,255,255,.75);
+    text-decoration:none;
+    margin-bottom:12px;
+    transition:.3s;
+    font-size:15px;
+}
+
+.footer a:hover{
+    color:var(--gold);
+    padding-left:8px;
+}
+
+.footer p{
+    color:rgba(255,255,255,.65);
+    line-height:1.8;
+    margin-bottom:10px;
+    font-size:15px;
+}
+
+.footer-bottom{
+    border-top:1px solid rgba(255,255,255,.1);
+    text-align:center;
+    padding:24px;
+    color:rgba(255,255,255,.5);
+    font-size:13.5px;
+}
+
+/* ==========================================
+   RESPONSIVE — GENERAL
+========================================== */
+
+@media(max-width:900px){
+
+    header{
+        padding-left:30px;
+        padding-right:30px;
+    }
+
+    .footer-container{
+        grid-template-columns:1fr;
+        text-align:center;
+        gap:44px;
+    }
+
+    .contact h2,
+    .cta h2,
+    .section-heading h2,
+    .intro-title h2{
+        font-size:34px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .morondava-intro,
+    .roadtrip,
+    .best-season,
+    .cta,
+    .contact{
+        padding-left:6%;
+        padding-right:6%;
+    }
+
+    .contact-buttons{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .btn{
+        width:100%;
+        max-width:320px;
+        text-align:center;
+    }
+
+    .season-card{
+        padding:30px 24px;
+    }
+
+    .card-content{
+        padding:26px;
+    }
+
+    .card-content h3{
+        font-size:25px;
+    }
+
+    .hero-actions .btn{
+        width:100%;
+        text-align:center;
+    }
+
+}
