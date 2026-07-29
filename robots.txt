@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://matourguidemadagascar-ctrl.github.io/matourguide-madagascar/sitemap.xml
