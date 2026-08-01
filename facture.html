@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nouvelle facture | Ma'Tour Guide Madagascar</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="stylesheet" href="base.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body{ background:var(--sand); min-height:100vh; }
+
+        #facture-loading{
+            display:flex; align-items:center; justify-content:center;
+            min-height:100vh; font-family:var(--display); color:var(--bark-soft);
+        }
+
+        #facture-content{ display:none; padding:120px 6% 80px; max-width:960px; margin:0 auto; }
+        #facture-content.is-visible{ display:block; }
+
+        .admin-topbar{
+            display:flex; justify-content:space-between; align-items:center;
+            margin-bottom:40px; flex-wrap:wrap; gap:14px;
+        }
+        .admin-topbar h1{ font-family:var(--display); font-weight:600; font-size:28px; color:var(--bark); }
+        .admin-topbar-actions{ display:flex; gap:12px; flex-wrap:wrap; }
+        .admin-topbar-actions .btn,
+        .admin-topbar-actions button{ border:none; cursor:pointer; }
+
+        .fx-card{
+            background:var(--white); border-radius:var(--radius-card);
+            padding:32px 30px; box-shadow:var(--shadow-soft); margin-bottom:26px;
+        }
+
+        .fx-card h2{
+            font-family:var(--display); font-weight:600; font-size:18px;
+            color:var(--bark); margin-bottom:20px;
+        }
+
+        .fx-grid{
+            display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+            gap:18px; margin-bottom:6px;
+        }
+
+        .fx-field label{
+            display:block; font-weight:600; font-size:13px;
+            color:var(--bark); margin-bottom:7px;
+        }
+
+        .fx-field input,
+        .fx-field select,
+        .fx-field textarea{
+            width:100%; padding:12px 14px; border:1.5px solid rgba(59,42,32,.18);
+            border-radius:10px; font-family:var(--body); font-size:14px;
+            color:var(--bark); background:var(--sand); outline:none; transition:.3s;
+        }
+
+        .fx-field input:focus,
+        .fx-field select:focus,
+        .fx-field textarea:focus{ border-color:var(--ember); background:var(--white); }
+
+        .fx-field textarea{ resize:vertical; min-height:90px; }
+
+        /* ---- Lignes de prestations ---- */
+
+        .fx-items-table{ width:100%; border-collapse:collapse; margin-bottom:16px; }
+        .fx-items-table th{
+            text-align:left; font-size:12px; text-transform:uppercase;
+            letter-spacing:.5px; color:var(--bark-soft); padding:0 8px 10px;
+        }
+        .fx-items-table td{ padding:6px 8px 6px 0; }
+        .fx-items-table input{
+            width:100%; padding:10px 12px; border:1.5px solid rgba(59,42,32,.15);
+            border-radius:8px; font-size:13.5px; background:var(--sand);
+        }
+        .fx-item-remove{
+            background:none; border:none; color:var(--ember); cursor:pointer;
+            font-size:18px; line-height:1; padding:6px;
+        }
+        #fx-add-item{
+            background:none; border:1.5px dashed rgba(59,42,32,.25);
+            color:var(--bark); padding:10px 18px; border-radius:10px;
+            cursor:pointer; font-size:13.5px; font-weight:600;
+        }
+
+        /* ---- Totaux / paiement ---- */
+
+        .fx-totals{
+            display:grid; grid-template-columns:1fr 1fr; gap:18px;
+            margin-top:20px; padding-top:20px; border-top:1px dashed rgba(59,42,32,.15);
+        }
+        .fx-totals-line{
+            display:flex; justify-content:space-between; align-items:center;
+            font-size:14.5px; color:var(--bark-soft); padding:8px 0;
+        }
+        .fx-totals-line strong{ color:var(--bark); }
+        .fx-totals-line.fx-grand-total{
+            font-family:var(--display); font-size:20px; color:var(--ember);
+            border-top:2px solid var(--bark); margin-top:8px; padding-top:14px;
+        }
+
+        /* ---- Inclus / non inclus ---- */
+
+        .fx-inclus-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+
+        /* ---- Signatures ---- */
+
+        .fx-signatures{ display:grid; grid-template-columns:1fr 1fr; gap:24px; text-align:center; }
+        .fx-signature-box{
+            border:1.5px dashed rgba(59,42,32,.25); border-radius:14px;
+            height:120px; display:flex; align-items:flex-end; justify-content:center;
+            padding-bottom:14px; font-size:13px; color:var(--bark-soft);
+        }
+
+        #facture-message{
+            display:none; margin-top:18px; padding:14px 18px; border-radius:10px; font-size:14px;
+        }
+        #facture-message.is-success{
+            display:block; background:rgba(92,110,82,.12); border:1px solid rgba(92,110,82,.3); color:#3B6E44;
+        }
+        #facture-message.is-error{
+            display:block; background:rgba(193,85,43,.1); border:1px solid rgba(193,85,43,.3); color:var(--ember);
+        }
+
+        .fx-actions{ display:flex; gap:14px; flex-wrap:wrap; margin-top:10px; }
+        .fx-actions .btn{ border:none; cursor:pointer; }
+
+        @media(max-width:700px){
+            .fx-totals, .fx-inclus-grid, .fx-signatures{ grid-template-columns:1fr; }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="facture-loading">Chargement...</div>
+
+    <div id="facture-content">
+
+        <div class="admin-topbar">
+            <h1>Nouvelle facture</h1>
+            <div class="admin-topbar-actions">
+                <a href="admin.html" class="btn btn-outline">← Tableau de bord</a>
+                <button type="button" class="btn" id="facture-logout">Déconnexion</button>
+            </div>
+        </div>
+
+        <form id="facture-form">
+
+            <!-- ==== Numéro / Date ==== -->
+            <div class="fx-card">
+                <h2>Informations de la facture</h2>
+                <div class="fx-grid">
+                    <div class="fx-field">
+                        <label for="fx-numero">Numéro de facture</label>
+                        <input type="text" id="fx-numero" value="001" required>
+                    </div>
+                    <div class="fx-field">
+                        <label for="fx-date">Date</label>
+                        <input type="date" id="fx-date" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==== Client (manuel, pas besoin de venir de la liste clients) ==== -->
+            <div class="fx-card">
+                <h2>Client</h2>
+                <div class="fx-grid">
+                    <div class="fx-field">
+                        <label for="fx-client-nom">Nom complet</label>
+                        <input type="text" id="fx-client-nom" required>
+                    </div>
+                    <div class="fx-field">
+                        <label for="fx-client-email">Email</label>
+                        <input type="email" id="fx-client-email">
+                    </div>
+                    <div class="fx-field">
+                        <label for="fx-client-telephone">Téléphone</label>
+                        <input type="tel" id="fx-client-telephone">
+                    </div>
+                    <div class="fx-field">
+                        <label for="fx-client-adresse">Adresse</label>
+                        <input type="text" id="fx-client-adresse">
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==== Résumé du voyage (la "cage") ==== -->
+            <div class="fx-card">
+                <h2>Résumé du voyage</h2>
+                <div class="fx-grid">
+                    <div class="fx-field">
+                        <label for="fx-destination">Destination</label>
+                        <input type="text" id="fx-destination" placeholder="ex: Nosy Be">
+                    </div>
+                    <div class="fx-field">
+                        <label for="fx-participants">Nombre de participants</label>
+                        <input type="number" id="fx-participants" min="1" value="1">
+                    </div>
+                    <div class="fx-field">
+                        <label for="fx-date-debut">Date de départ</label>
+                        <input type="date" id="fx-date-debut">
+                    </div>
+                    <div class="fx-field">
+                        <label for="fx-date-fin">Date de retour</label>
+                        <input type="date" id="fx-date-fin">
+                    </div>
+                </div>
+                <div class="fx-field" style="margin-top:14px;">
+                    <label for="fx-programme">Description / programme</label>
+                    <textarea id="fx-programme" placeholder="Résumé du circuit, des étapes principales..."></textarea>
+                </div>
+            </div>
+
+            <!-- ==== Prestations ==== -->
+            <div class="fx-card">
+                <h2>Prestations</h2>
+
+                <table class="fx-items-table">
+                    <thead>
+                        <tr>
+                            <th style="width:44%">Service</th>
+                            <th style="width:14%">Qté</th>
+                            <th style="width:20%">Prix unitaire (Ar)</th>
+                            <th style="width:18%">Total (Ar)</th>
+                            <th style="width:4%"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="fx-items-body">
+                        <!-- lignes générées par JS -->
+                    </tbody>
+                </table>
+
+                <button type="button" id="fx-add-item">+ Ajouter une ligne</button>
+
+                <div class="fx-totals">
+                    <div class="fx-totals-line">
+                        <span>Total</span>
+                        <strong id="fx-total-display">0 Ar</strong>
+                    </div>
+                    <div class="fx-field">
+                        <label for="fx-acompte">Acompte versé (Ar)</label>
+                        <input type="number" id="fx-acompte" min="0" value="0">
+                    </div>
+                    <div class="fx-totals-line">
+                        <span>Reste à payer</span>
+                        <strong id="fx-reste-display">0 Ar</strong>
+                    </div>
+                    <div class="fx-field">
+                        <label for="fx-mode-paiement">Mode de paiement</label>
+                        <select id="fx-mode-paiement">
+                            <option>Espèces</option>
+                            <option>Mobile Money</option>
+                            <option>Virement bancaire</option>
+                            <option>Autre</option>
+                        </select>
+                    </div>
+                    <div class="fx-totals-line fx-grand-total" style="grid-column:1 / -1;">
+                        <span>Montant total</span>
+                        <strong id="fx-grand-total-display">0 Ar</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==== Inclus / non inclus ==== -->
+            <div class="fx-card">
+                <h2>Ce qui est inclus / non inclus</h2>
+                <div class="fx-inclus-grid">
+                    <div class="fx-field">
+                        <label for="fx-inclus">Inclus (une ligne par élément)</label>
+                        <textarea id="fx-inclus" placeholder="Transport privé&#10;Guide francophone&#10;Repas du midi"></textarea>
+                    </div>
+                    <div class="fx-field">
+                        <label for="fx-non-inclus">Non inclus (une ligne par élément)</label>
+                        <textarea id="fx-non-inclus" placeholder="Vols internationaux&#10;Boissons&#10;Pourboires"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==== Statut ==== -->
+            <div class="fx-card">
+                <h2>Statut</h2>
+                <div class="fx-field" style="max-width:260px;">
+                    <label for="fx-statut">Statut de la facture</label>
+                    <select id="fx-statut">
+                        <option value="En attente">En attente</option>
+                        <option value="Acompte versé">Acompte versé</option>
+                        <option value="Payée">Payée</option>
+                        <option value="Annulée">Annulée</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- ==== Signatures ==== -->
+            <div class="fx-card">
+                <h2>Signatures</h2>
+                <div class="fx-signatures">
+                    <div class="fx-signature-box">Signature du client</div>
+                    <div class="fx-signature-box">Signature de l'agence</div>
+                </div>
+            </div>
+
+            <div class="fx-actions">
+                <button type="submit" class="btn">💾 Enregistrer la facture</button>
+                <button type="button" class="btn btn-outline" id="fx-download-pdf">📄 Télécharger le PDF</button>
+            </div>
+
+            <div id="facture-message"></div>
+
+        </form>
+
+    </div>
+
+    <script type="module" src="js/facture.js"></script>
+
+</body>
+
+</html>

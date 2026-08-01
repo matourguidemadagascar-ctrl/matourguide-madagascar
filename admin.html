@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de bord | Ma'Tour Guide Madagascar</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="stylesheet" href="base.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body{
+            background:var(--sand);
+            min-height:100vh;
+        }
+
+        #admin-loading{
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            min-height:100vh;
+            font-family:var(--display);
+            color:var(--bark-soft);
+        }
+
+        #admin-content{
+            display:none;
+            padding:120px 6% 60px;
+            max-width:1100px;
+            margin:0 auto;
+        }
+
+        #admin-content.is-visible{
+            display:block;
+        }
+
+        .admin-topbar{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:40px;
+            flex-wrap:wrap;
+            gap:14px;
+        }
+
+        .admin-topbar h1{
+            font-family:var(--display);
+            font-weight:600;
+            font-size:28px;
+            color:var(--bark);
+        }
+
+        .admin-topbar-actions{
+            display:flex;
+            gap:12px;
+            flex-wrap:wrap;
+        }
+
+        .admin-topbar-actions .btn,
+        .admin-topbar-actions button{
+            border:none;
+            cursor:pointer;
+        }
+
+        #admin-logout{
+            border:none;
+            cursor:pointer;
+        }
+
+        .fx-card{
+            background:var(--white);
+            border-radius:var(--radius-card);
+            padding:32px 30px;
+            box-shadow:var(--shadow-soft);
+        }
+
+        .fx-card h2{
+            font-family:var(--display);
+            font-weight:600;
+            font-size:18px;
+            color:var(--bark);
+            margin-bottom:20px;
+        }
+
+        .admin-factures-table{
+            width:100%;
+            border-collapse:collapse;
+        }
+
+        .admin-factures-table th{
+            text-align:left;
+            font-size:12px;
+            text-transform:uppercase;
+            letter-spacing:.5px;
+            color:var(--bark-soft);
+            padding:0 8px 12px;
+            border-bottom:1px solid rgba(59,42,32,.12);
+        }
+
+        .admin-factures-table td{
+            padding:12px 8px;
+            font-size:14px;
+            color:var(--bark);
+            border-bottom:1px dashed rgba(59,42,32,.1);
+        }
+
+        .admin-factures-table a{
+            color:var(--ember);
+            font-weight:600;
+            text-decoration:none;
+            margin-right:10px;
+        }
+
+        .statut-badge{
+            display:inline-block;
+            padding:4px 10px;
+            border-radius:20px;
+            font-size:12px;
+            font-weight:600;
+        }
+
+        .statut-badge.payee{ background:rgba(92,110,82,.15); color:#3B6E44; }
+        .statut-badge.acompte{ background:rgba(224,168,52,.18); color:#8a6a12; }
+        .statut-badge.attente{ background:rgba(193,85,43,.1); color:var(--ember); }
+        .statut-badge.annulee{ background:rgba(59,42,32,.1); color:var(--bark-soft); }
+
+        @media(max-width:700px){
+            .admin-factures-table{ font-size:13px; }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="admin-loading">Chargement...</div>
+
+    <div id="admin-content">
+
+        <div class="admin-topbar">
+            <h1>Bienvenue, <span id="admin-user-email"></span></h1>
+            <div class="admin-topbar-actions">
+                <a href="facture.html" class="btn">+ Nouvelle facture</a>
+                <a href="clients.html" class="btn btn-outline">Clients</a>
+                <button type="button" class="btn btn-outline" id="admin-logout">Déconnexion</button>
+            </div>
+        </div>
+
+        <div class="fx-card">
+            <h2>Factures récentes</h2>
+
+            <table class="admin-factures-table">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Client</th>
+                        <th>Date</th>
+                        <th>Montant</th>
+                        <th>Statut</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="admin-factures-body">
+                    <tr><td colspan="6">Chargement...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script type="module" src="js/admin.js"></script>
+
+</body>
+
+</html>
