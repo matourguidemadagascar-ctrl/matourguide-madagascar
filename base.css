@@ -4,28 +4,20 @@
    navigation, buttons.
 
    Loaded FIRST, before the page-specific stylesheet
-   (style.css, morondava.css, ...). Page stylesheets
-   should only contain page-specific sections — never
-   redeclare header, nav, .btn or the reset below, or
-   they will silently override this system.
-
-   Each destination keeps its own mood through hero
-   backgrounds and section accents in its own file —
-   but header, typography and buttons stay identical
-   everywhere so the site reads as one brand.
+   (style.css, east-coast.css, ...).
 =================================================== */
 
 :root{
 
     /* -- Brand palette (sunset over the baobabs) -- */
-    --dusk:        #1F1830;   /* deep indigo-plum, used for header/footer dark states */
-    --dusk-2:      #402541;   /* transitional plum                                    */
-    --ember:       #C1552B;   /* burnt sunset orange — primary action color           */
-    --gold:        #E0A83E;   /* baobab gold-hour light — hover / secondary accent    */
-    --sand:        #F4ECDB;   /* warm sand — default page background                  */
-    --sand-deep:   #EADFC7;   /* darker sand for alternating sections                 */
-    --bark:        #3B2A20;   /* deep bark brown — headings                           */
-    --bark-soft:   #6B5644;   /* softened bark — body copy                            */
+    --dusk:        #1F1830;   /* deep indigo-plum — header/footer dark states */
+    --dusk-2:      #402541;   /* transitional plum                             */
+    --ember:       #C1552B;   /* burnt sunset orange — primary action color    */
+    --gold:        #E0A83E;   /* baobab gold-hour light — hover / secondary    */
+    --sand:        #F4ECDB;   /* warm sand — default page background           */
+    --sand-deep:   #EADFC7;   /* darker sand for alternating sections          */
+    --bark:        #3B2A20;   /* deep bark brown — headings                    */
+    --bark-soft:   #6B5644;   /* softened bark — body copy                     */
     --white:       #FFFFFF;
 
     --display: 'Fraunces', serif;
@@ -39,7 +31,7 @@
 }
 
 /* ===============================
-RESET
+   RESET
 =============================== */
 
 *{
@@ -53,12 +45,10 @@ html{
 }
 
 body{
-
     font-family:var(--body);
     background:var(--sand);
     color:var(--bark-soft);
     overflow-x:hidden;
-
 }
 
 img{
@@ -93,11 +83,10 @@ img{
 }
 
 /* ===============================
-HEADER
+   HEADER
 =============================== */
 
 header{
-
     position:fixed;
     top:0;
     left:0;
@@ -108,26 +97,21 @@ header{
     align-items:center;
     z-index:999;
     transition:.4s;
-
 }
 
 header.scrolled{
-
     background:rgba(244,236,219,.92);
     backdrop-filter:blur(10px);
     box-shadow:0 5px 25px rgba(43,26,10,.10);
     padding:18px 70px;
-
 }
 
 .logo{
-
     color:var(--white);
     font-family:var(--display);
     font-size:23px;
     font-weight:600;
     letter-spacing:.3px;
-
 }
 
 .logo span{
@@ -146,7 +130,6 @@ nav{
 }
 
 nav a{
-
     text-decoration:none;
     color:rgba(255,255,255,.9);
     margin-left:38px;
@@ -154,7 +137,6 @@ nav a{
     font-weight:500;
     font-size:15px;
     position:relative;
-
 }
 
 nav a::after{
@@ -188,9 +170,7 @@ header.scrolled nav a:hover{
     display:none;
 }
 
-/* Burger: visual size stays 30x22px, but padding + negative
-   margin extends the real clickable/tappable area to ~44x44px
-   (Apple/Google minimum touch target) without shifting layout. */
+/* Burger — larger touch target without shifting layout */
 .nav-burger{
     display:none;
     width:30px;
@@ -224,9 +204,7 @@ header.scrolled .nav-burger span::after{
 .nav-burger span::before{ top:-9px; }
 .nav-burger span::after{ top:9px; }
 
-/* Phones in landscape (e.g. iPhone ~844px wide) still get the
-   compact burger menu instead of the full desktop nav, which
-   would otherwise feel cramped in a short landscape header. */
+/* Landscape phones still get the burger */
 @media(max-width:900px) and (orientation:landscape){
 
     nav{
@@ -257,7 +235,6 @@ header.scrolled .nav-burger span::after{
     .nav-toggle:checked ~ nav{
         transform:translateX(0);
     }
-
 }
 
 @media(max-width:600px){
@@ -298,15 +275,13 @@ header.scrolled .nav-burger span::after{
     .nav-toggle:checked ~ nav{
         transform:translateX(0);
     }
-
 }
 
 /* ===============================
-BUTTONS
+   BUTTONS
 =============================== */
 
 .btn{
-
     display:inline-block;
     width:fit-content;
     padding:17px 36px;
@@ -318,7 +293,6 @@ BUTTONS
     font-size:15px;
     transition:.35s;
     border:1px solid var(--ember);
-
 }
 
 .btn:hover{
@@ -359,5 +333,4 @@ BUTTONS
         max-width:320px;
         text-align:center;
     }
-
 }

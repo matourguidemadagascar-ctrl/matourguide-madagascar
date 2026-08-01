@@ -337,6 +337,26 @@
             document.getElementById('nav-toggle').checked = false;
         });
     });
+    // Reveal chapter panels on scroll
+    const chapterPanels = document.querySelectorAll('.chapter-panel');
+
+    if (chapterPanels.length) {
+        if ('IntersectionObserver' in window) {
+            const chapterObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        chapterObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.25 });
+
+            chapterPanels.forEach((panel) => chapterObserver.observe(panel));
+        } else {
+            // Fallback for old browsers without IntersectionObserver
+            chapterPanels.forEach((panel) => panel.classList.add('is-visible'));
+        }
+    }
 </script>
 
 <script src="script.js"></script>
