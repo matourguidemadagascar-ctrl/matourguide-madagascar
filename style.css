@@ -1279,7 +1279,15 @@
 .footer-bottom strong{
     color:rgba(255,255,255,.75);
 }
+.footer-admin-link{
+    color:rgba(255,255,255,.35);
+    text-decoration:none;
+    transition:.25s;
+}
 
+.footer-admin-link:hover{
+    color:var(--gold);
+}
 
 /* ==========================================
    RESPONSIVE GENERAL
