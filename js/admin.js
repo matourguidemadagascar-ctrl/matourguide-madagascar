@@ -8,7 +8,9 @@ import {
     collection,
     query,
     orderBy,
-    onSnapshot
+    onSnapshot,
+    doc,
+    deleteDoc
 } from "https://www.gstatic.com/firebasejs/12.17.0/firebase-firestore.js";
 
 const loadingBox = document.getElementById("admin-loading");
@@ -51,8 +53,8 @@ function chargerFacturesRecentes() {
 
         tbody.innerHTML = "";
 
-        snapshot.forEach(function (doc) {
-            const f = doc.data();
+        snapshot.forEach(function (docSnap) {
+            const f = docSnap.data();
             const dateAffichee = f.date ? formatDateFr(f.date) : "-";
             const statutInfo = getStatutInfo(f.statut);
 
@@ -63,9 +65,24 @@ function chargerFacturesRecentes() {
                 "<td>" + dateAffichee + "</td>" +
                 "<td>" + formatMontant(f.total) + "</td>" +
                 '<td><span class="statut-badge ' + statutInfo.className + '">' + (f.statut || "-") + "</span></td>" +
-                '<td><a href="facture.html?id=' + doc.id + '">Voir</a></td>';
+                '<td><a href="facture.html?id=' + docSnap.id + '">Voir</a><a href="#" class="fx-delete-link" data-id="' + docSnap.id + '" data-numero="' + (f.numero || "") + '">Supprimer</a></td>';
 
             tbody.appendChild(tr);
+        });
+
+        tbody.querySelectorAll(".fx-delete-link").forEach(function (link) {
+            link.addEventListener("click", function (e) {
+                e.preventDefault();
+                const factureId = link.dataset.id;
+                const numero = link.dataset.numero;
+                const confirmation = window.confirm("Supprimer définitivement la facture N° " + numero + " ? Cette action est irréversible.");
+                if (!confirmation) return;
+
+                deleteDoc(doc(db, "factures", factureId)).catch(function (error) {
+                    console.error("Erreur lors de la suppression :", error);
+                    alert("Erreur lors de la suppression de la facture.");
+                });
+            });
         });
     }, function (error) {
         console.error("Erreur lors du chargement des factures :", error);
