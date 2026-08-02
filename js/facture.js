@@ -8,6 +8,7 @@ import {
     collection,
     addDoc,
     updateDoc,
+    deleteDoc,
     getDocs,
     doc,
     getDoc,
@@ -24,7 +25,6 @@ const AGENCY_INFO = {
     telephone: "+261 34 22 784 90",
     email: "matourguidemadagascar@gmail.com",
     adresse: "Nosy Be, Madagascar", // à confirmer/ajuster si besoin
-    nifStat: "NIF: [à compléter] / STAT: [à compléter]",
     agrement: "Décision d'agrément N°349/Mintour/SG/DGAT/DFMT/SSAE/GUIDE-18 du 10/08/2018",
     idNumber: "N° ID : 104-SSAE-18/R",
     autorisation: "Autorisation N°089-MTA/SG/DGT/DAIT/SAT-EDBM.26"
@@ -191,6 +191,7 @@ function chargerFactureExistante(factureId) {
         if (submitBtn) submitBtn.textContent = "💾 Mettre à jour la facture";
         const heading = document.querySelector(".admin-topbar h1");
         if (heading) heading.textContent = "Modifier la facture N° " + (data.numero || "");
+        afficherBoutonSupprimer(data.numero);
 
     }).catch(function (error) {
         console.error("Erreur lors du chargement de la facture :", error);
@@ -198,6 +199,37 @@ function chargerFactureExistante(factureId) {
         setNextInvoiceNumber();
         addItemRow();
     });
+}
+
+// ---- Bouton Supprimer (affiché uniquement en mode édition) ----
+
+function afficherBoutonSupprimer(numero) {
+    if (document.getElementById("fx-delete-btn")) return; // déjà affiché, on n'en ajoute pas un deuxième
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.type = "button";
+    deleteBtn.id = "fx-delete-btn";
+    deleteBtn.className = "btn btn-outline";
+    deleteBtn.textContent = "🗑️ Supprimer cette facture";
+    deleteBtn.style.color = "#8a2f1f";
+    deleteBtn.style.borderColor = "#8a2f1f";
+
+    deleteBtn.addEventListener("click", function () {
+        const confirmation = window.confirm("Supprimer définitivement la facture N° " + (numero || "") + " ? Cette action est irréversible.");
+        if (!confirmation || !currentFactureId) return;
+
+        deleteDoc(doc(db, "factures", currentFactureId))
+            .then(function () {
+                window.location.href = "admin.html";
+            })
+            .catch(function (error) {
+                console.error("Erreur lors de la suppression :", error);
+                showMessage("⚠️ Erreur lors de la suppression.", "is-error");
+            });
+    });
+
+    const actionsBar = document.querySelector(".fx-actions");
+    if (actionsBar) actionsBar.appendChild(deleteBtn);
 }
 
 // ---- Lignes de prestations dynamiques ----
@@ -371,8 +403,6 @@ function generatePDF(data) {
     pdf.text(AGENCY_INFO.adresse, marginX, y);
     y += 5;
     pdf.text(AGENCY_INFO.telephone + "  ·  " + AGENCY_INFO.email, marginX, y);
-    y += 5;
-    pdf.text(AGENCY_INFO.nifStat, marginX, y);
     y += 5;
     pdf.text(AGENCY_INFO.agrement, marginX, y);
     y += 5;
