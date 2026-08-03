@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voyage à Madagascar | Circuits privés sur mesure – Ma'Tour Guide Madagascar</title>
+    <meta name="description"
+        content="Découvrez Madagascar avec Ma'Tour Guide Madagascar. Voyages privés sur mesure, circuits organisés, faune sauvage, plages, baobabs, lémuriens et aventures inoubliables.">
+
+    <link rel="stylesheet" href="../base.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../explore-madagascar.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Work+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ===========================
+     HEADER
+=========================== -->
+<header id="navbar">
+    <div class="logo">
+        Ma'Tour&nbsp;Guide <span>Madagascar</span>
+    </div>
+
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-burger" aria-label="Ouvrir le menu">
+        <span></span>
+    </label>
+
+    <nav>
+        <a href="#home">Accueil</a>
+        <a href="#map">Nos itinéraires</a>
+        <a href="#destinations">Destinations</a>
+        <a href="#tours">Circuits</a>
+        <a href="#gallery">Galerie</a>
+        <a href="#contact">Contact</a>
+        <a href="../index.html" style="opacity:.7;">EN</a>
+    </nav>
+</header>
+
+
+<!-- ===========================
+     HERO SLIDER
+=========================== -->
+<section class="hero" id="home">
+    <div class="slider">
+        <div class="slide active" style="background-image:url('../images/nosybe.jpg');"></div>
+        <div class="slide" style="background-image:url('../images/montpassot.jpg');"></div>
+        <div class="slide" style="background-image:url('../images/baobabs.jpg');"></div>
+        <div class="slide" style="background-image:url('../images/tsingy.jpg');"></div>
+        <div class="slide" style="background-image:url('../images/nosyiranja.jpg');"></div>
+    </div>
+
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+        <h1>Découvrez le cœur de Madagascar</h1>
+        <p>Voyages privés • Circuits organisés • Faune sauvage • Îles paradisiaques</p>
+        <a href="#map" class="btn">Explorer nos itinéraires</a>
+    </div>
+</section>
+<!-- ===========================
+     EXPLORE MADAGASCAR
+=========================== -->
+<section class="explore-md" id="map">
+    <div class="explore-md-inner">
+
+        <div class="explore-md-header">
+            <span class="eyebrow">Cinq mondes, une seule île</span>
+            <h2>Explorer Madagascar</h2>
+            <p>Survolez ou touchez une destination pour découvrir ce qui vous attend.</p>
+        </div>
+
+        <div class="explore-md-layout">
+
+            <div class="explore-md-stage" id="exploreMdStage">
+
+                <svg id="exploreMdMap" viewBox="0 0 420 780" xmlns="http://www.w3.org/2000/svg" aria-label="Carte interactive de Madagascar">
+                    <defs>
+                        <linearGradient id="exploreMdIslandFill" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#2A2438"/>
+                            <stop offset="100%" stop-color="#191325"/>
+                        </linearGradient>
+                    </defs>
+
+                    <path class="explore-md-island" d="M210 38
+                        C245 42 278 68 292 105
+                        C308 148 322 195 328 245
+                        C334 295 338 345 332 395
+                        C326 445 318 495 308 545
+                        C298 595 282 645 258 685
+                        C234 725 198 748 162 745
+                        C126 742 102 715 98 675
+                        C94 635 108 595 118 555
+                        C128 515 132 475 126 435
+                        C120 395 132 358 148 325
+                        C164 292 172 258 168 225
+                        C164 192 152 162 158 132
+                        C164 102 182 72 210 38 Z"/>
+
+                    <g class="explore-md-connections" id="exploreMdConnections"></g>
+
+                    <g class="explore-md-points">
+
+                        <g class="explore-md-point" data-id="diego" data-x="278" data-y="95" tabindex="0" role="button" aria-label="Diego Suarez — voir les informations">
+                            <circle class="point-pulse" cx="278" cy="95" r="16" fill="var(--exp-diego)"/>
+                            <circle class="point-dot" cx="278" cy="95" r="7" fill="var(--exp-diego)"/>
+                            <text class="point-label" x="278" y="78">Diego Suarez</text>
+                        </g>
+
+                        <g class="explore-md-point" data-id="nosybe" data-x="155" data-y="155" tabindex="0" role="button" aria-label="Nosy Be — voir les informations">
+                            <circle class="point-pulse" cx="155" cy="155" r="16" fill="var(--exp-nosybe)"/>
+                            <circle class="point-dot" cx="155" cy="155" r="7" fill="var(--exp-nosybe)"/>
+                            <text class="point-label" x="155" y="138">Nosy Be</text>
+                        </g>
+
+                        <g class="explore-md-point" data-id="eastcoast" data-x="295" data-y="340" tabindex="0" role="button" aria-label="Côte Est — voir les informations">
+                            <circle class="point-pulse" cx="295" cy="340" r="16" fill="var(--exp-eastcoast)"/>
+                            <circle class="point-dot" cx="295" cy="340" r="7" fill="var(--exp-eastcoast)"/>
+                            <text class="point-label" x="295" y="323">Côte Est</text>
+                        </g>
+
+                        <g class="explore-md-point" data-id="morondava" data-x="165" data-y="510" tabindex="0" role="button" aria-label="Morondava — voir les informations">
+                            <circle class="point-pulse" cx="165" cy="510" r="16" fill="var(--exp-morondava)"/>
+                            <circle class="point-dot" cx="165" cy="510" r="7" fill="var(--exp-morondava)"/>
+                            <text class="point-label" x="165" y="493">Morondava</text>
+                        </g>
+
+                        <g class="explore-md-point" data-id="tulear" data-x="148" data-y="680" tabindex="0" role="button" aria-label="Tuléar — voir les informations">
+                            <circle class="point-pulse" cx="148" cy="680" r="16" fill="var(--exp-tulear)"/>
+                            <circle class="point-dot" cx="148" cy="680" r="7" fill="var(--exp-tulear)"/>
+                            <text class="point-label" x="148" y="663">Tuléar</text>
+                        </g>
+
+                    </g>
+                </svg>
+
+                <div class="explore-md-tooltip" id="exploreMdTooltip" role="tooltip">
+                    <strong class="tooltip-title"></strong>
+                    <p class="tooltip-desc"></p>
+                    <span class="tooltip-days"></span>
+                </div>
+
+            </div>
+
+            <aside class="explore-md-panel" id="exploreMdPanel" aria-live="polite">
+                <button class="explore-md-panel-close" id="exploreMdClose" aria-label="Fermer">&times;</button>
+                <div class="explore-md-panel-image">
+                    <img id="exploreMdImg" src="" alt="">
+                </div>
+                <div class="explore-md-panel-body">
+                    <span class="explore-md-panel-badge" id="exploreMdDays"></span>
+                    <h3 id="exploreMdTitle"></h3>
+                    <p id="exploreMdDesc"></p>
+                    <ul class="explore-md-highlights" id="exploreMdHighlights"></ul>
+                    <a href="#" class="btn" id="exploreMdLink">Découvrir la destination →</a>
+                </div>
+            </aside>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===========================
+     BOOKING SEARCH
+=========================== -->
+<section class="booking-search">
+    <form class="booking-form" id="booking-form">
+        <div class="field">
+            <label for="booking-date">Date</label>
+            <input type="date" id="booking-date" name="date">
+        </div>
+
+        <div class="field">
+            <label for="booking-guests">Voyageurs</label>
+            <select id="booking-guests" name="guests">
+                <option>1 personne</option>
+                <option>2 personnes</option>
+                <option>3 personnes</option>
+                <option>4 personnes</option>
+                <option>5 personnes et +</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label for="booking-destination">Destination</label>
+            <select id="booking-destination" name="destination">
+                <option>Nosy Be</option>
+                <option>Morondava</option>
+                <option>Tuléar</option>
+                <option>Côte Est</option>
+                <option>Diego Suarez</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label for="booking-trip-type">Type de voyage</label>
+            <select id="booking-trip-type" name="tripType">
+                <option>Circuit privé</option>
+                <option>Aventure en groupe</option>
+                <option>Famille &amp; sur mesure</option>
+                <option>Pas encore décidé</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn">Rechercher</button>
+    </form>
+</section>
+
+
+
+
+<!-- ===========================
+     STATISTICS
+=========================== -->
+<section class="stats">
+    <div class="stat-box">
+        <h2>10+</h2>
+        <p>Années d'expérience</p>
+    </div>
+    <div class="stat-box">
+        <h2>100%</h2>
+        <p>Circuits personnalisés</p>
+    </div>
+    <div class="stat-box">
+        <h2>24/7</h2>
+        <p>Assistance client</p>
+    </div>
+    <div class="stat-box">
+        <h2>★★★★★</h2>
+        <p>Expériences authentiques</p>
+    </div>
+</section>
+
+
+<!-- ===========================
+     INTRODUCTION
+=========================== -->
+<section class="intro">
+    <h2>Bienvenue à Madagascar</h2>
+    <p>
+        Vivez des paysages à couper le souffle, une faune unique et des aventures inoubliables avec
+        Ma'Tour Guide Madagascar.
+        De Nosy Be à Morondava, de l'Allée des Baobabs aux spectaculaires Tsingy,
+        nous créons des voyages authentiques, façonnés rien que pour vous.
+    </p>
+</section>
+
+
+<!-- ===========================
+     TRIP PLANNER
+=========================== -->
+<section class="planner" id="trip-planner">
+    <h2>Planifiez votre voyage</h2>
+    <p class="subtitle">
+        Construisez votre propre itinéraire et obtenez une estimation détaillée instantanée.
+    </p>
+
+    <div class="planner-box" id="planner-box">
+
+        <div class="planner-steps-nav" id="planner-steps-nav">
+            <span class="step-dot active" data-dot="1"></span>
+            <span class="step-dot" data-dot="2"></span>
+            <span class="step-dot" data-dot="3"></span>
+            <span class="step-dot" data-dot="4"></span>
+            <span class="step-dot" data-dot="5"></span>
+            <span class="step-dot" data-dot="6"></span>
+            <span class="step-dot" data-dot="7"></span>
+        </div>
+
+        <!-- Step 1 — Destinations -->
+        <div class="planner-step active" data-step="1">
+            <h3>1. Choisissez vos destinations</h3>
+            <div class="planner-destinations" id="planner-destinations">
+                <!-- generated by script.js -->
+            </div>
+        </div>
+
+        <!-- Step 2 — Dates & duration -->
+        <div class="planner-step" data-step="2">
+            <h3>2. Quand, et pour combien de temps ?</h3>
+            <div class="field">
+                <label for="planner-start-date">Date de départ approximative</label>
+                <input type="date" id="planner-start-date">
+            </div>
+            <div class="planner-days">
+                <label for="planner-duration">Nombre de jours</label>
+                <input type="number" id="planner-duration" min="1" placeholder="ex : 12">
+            </div>
+        </div>
+
+        <!-- Step 3 — Travelers -->
+        <div class="planner-step" data-step="3">
+            <h3>3. Voyageurs</h3>
+            <div class="planner-days">
+                <label for="planner-travelers">Nombre d'adultes</label>
+                <input type="number" id="planner-travelers" min="1" value="2">
+            </div>
+            <label class="planner-children-toggle">
+                <input type="checkbox" id="planner-has-children">
+                <span>Voyagez-vous avec des enfants ?</span>
+            </label>
+            <div class="planner-children-fields" id="planner-children-fields">
+                <div class="planner-days">
+                    <label for="planner-children-under2">Enfants de moins de 2 ans (gratuit)</label>
+                    <input type="number" id="planner-children-under2" min="0" value="0">
+                </div>
+                <div class="planner-days">
+                    <label for="planner-children-2to10">Enfants de 2 à 10 ans (demi-tarif)</label>
+                    <input type="number" id="planner-children-2to10" min="0" value="0">
+                </div>
+                <div class="planner-days">
+                    <label for="planner-children-11plus">Enfants de 11 ans et + (plein tarif)</label>
+                    <input type="number" id="planner-children-11plus" min="0" value="0">
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 4 — Accommodation -->
+        <div class="planner-step" data-step="4">
+            <h3>4. Style d'hébergement</h3>
+            <div class="option-cards" id="planner-accommodation">
+                <label class="option-card">
+                    <input type="radio" name="accommodation" value="budget">
+                    <span class="option-card-inner">
+                        <h4>Économique</h4>
+                        <p>Pensions simples, confort local.</p>
+                        <span class="price">≈ 25 € / personne / nuit</span>
+                    </span>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="accommodation" value="standard" checked>
+                    <span class="option-card-inner">
+                        <h4>Standard</h4>
+                        <p>Lodges confortables de type 3 étoiles.</p>
+                        <span class="price">≈ 55 € / personne / nuit</span>
+                    </span>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="accommodation" value="comfort">
+                    <span class="option-card-inner">
+                        <h4>Confort</h4>
+                        <p>Lodges haut de gamme &amp; hôtels boutique.</p>
+                        <span class="price">≈ 110 € / personne / nuit</span>
+                    </span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Step 5 — Transport -->
+        <div class="planner-step" data-step="5">
+            <h3>5. Transport</h3>
+            <div class="option-cards" id="planner-transport">
+                <label class="option-card">
+                    <input type="radio" name="transport" value="shared">
+                    <span class="option-card-inner">
+                        <h4>Véhicule partagé</h4>
+                        <p>Transferts groupés, l'option la plus économique.</p>
+                        <span class="price">≈ 40 € / transfert / personne</span>
+                    </span>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="transport" value="private" checked>
+                    <span class="option-card-inner">
+                        <h4>Véhicule privé</h4>
+                        <p>Votre propre chauffeur-guide et véhicule.</p>
+                        <span class="price">≈ 90 € / transfert / personne</span>
+                    </span>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="transport" value="flights">
+                    <span class="option-card-inner">
+                        <h4>Privé + vols intérieurs</h4>
+                        <p>Le moyen le plus rapide entre régions éloignées.</p>
+                        <span class="price">≈ 240 € / transfert / personne</span>
+                    </span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Step 6 — Guide -->
+        <div class="planner-step" data-step="6">
+            <h3>6. Guide local</h3>
+            <div class="option-cards" id="planner-guide">
+                <label class="option-card">
+                    <input type="radio" name="guide" value="yes" checked>
+                    <span class="option-card-inner">
+                        <h4>Avec un guide privé</h4>
+                        <p>Recommandé pour une expérience plus riche.</p>
+                        <span class="price">≈ 35 € / jour</span>
+                    </span>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="guide" value="no">
+                    <span class="option-card-inner">
+                        <h4>Sans guide</h4>
+                        <p>Chauffeur uniquement.</p>
+                        <span class="price">0 €</span>
+                    </span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Step 7 — Excursions -->
+        <div class="planner-step" data-step="7">
+            <h3>7. Excursions &amp; activités</h3>
+
+            <div class="nosybe-package-toggle" id="nosybe-package-toggle">
+                <label class="excursion-option package-toggle">
+                    <input type="checkbox" id="nosybe-package-check">
+                    <span class="excursion-option-text">
+                        <strong>Déjà à Nosy Be ? Réservez juste le forfait excursion de l'île</strong>
+                        <span>Pour les voyageurs qui n'ont pas besoin d'un circuit complet — juste le tour de l'île.</span>
+                    </span>
+                </label>
+            </div>
+
+            <div class="nosybe-package-details" id="nosybe-package-details">
+                <div class="package-photos-grid" id="package-photos-grid"></div>
+                <div class="package-price-box">
+                    <div class="package-currency-choice">
+                        <label class="option-card">
+                            <input type="radio" name="package-residency" value="resident" checked>
+                            <span class="option-card-inner">
+                                <h4>Tarif résident</h4>
+                                <p>Résidents malgaches</p>
+                                <span class="price">780 000 Ar / personne</span>
+                            </span>
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="package-residency" value="nonresident">
+                            <span class="option-card-inner">
+                                <h4>Tarif non-résident</h4>
+                                <p>Visiteurs étrangers</p>
+                                <span class="price">199,99 € / personne</span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="package-info-lists">
+                        <div>
+                            <h4>Inclus</h4>
+                            <ul>
+                                <li>Tous les transferts maritimes</li>
+                                <li>Déjeuners pique-nique</li>
+                                <li>Transferts terrestres</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Non inclus</h4>
+                            <ul>
+                                <li>Hébergement</li>
+                                <li>Petits-déjeuners et dîners</li>
+                                <li>Achats personnels</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="package-total" id="package-total"></div>
+                </div>
+            </div>
+
+            <div class="destination-circuit-details" id="morondava-circuit-details">
+                <h4>Circuit Morondava – Kirindy – Tsingy de Bemaraha</h4>
+                <p class="circuit-subtitle">4 jours / 3 nuits à Bekopaka</p>
+                <div class="circuit-days">
+                    <div class="circuit-day">
+                        <span class="circuit-day-number">Jour 1</span>
+                        <div class="circuit-day-text">
+                            <strong>Morondava → Kirindy → Bekopaka</strong>
+                            <p>Départ à 05h30 de l'hôtel Menabe Morondava. Visite guidée de la réserve de Kirindy. Traversées en bac de la Tsiribihina et du Manambolo. Nuit à Tanankoy Bekopaka.</p>
+                        </div>
+                    </div>
+                    <div class="circuit-day">
+                        <span class="circuit-day-number">Jour 2</span>
+                        <div class="circuit-day-text">
+                            <strong>Petit Tsingy</strong>
+                            <p>Excursion guidée au Petit Tsingy. Balade en pirogue sur la rivière Manambolo. Nuit à Tanankoy Bekopaka.</p>
+                        </div>
+                    </div>
+                    <div class="circuit-day">
+                        <span class="circuit-day-number">Jour 3</span>
+                        <div class="circuit-day-text">
+                            <strong>Grand Tsingy (UNESCO)</strong>
+                            <p>Journée complète d'exploration du Grand Tsingy de Bemaraha. Nuit à Tanankoy Bekopaka.</p>
+                        </div>
+                    </div>
+                    <div class="circuit-day">
+                        <span class="circuit-day-number">Jour 4</span>
+                        <div class="circuit-day-text">
+                            <strong>Bekopaka → Morondava</strong>
+                            <p>Retour via les bacs. Arrêt à l'Allée des Baobabs et au Baobab Amoureux.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="circuit-highlights">
+                    <span>🌳 Réserve de Kirindy</span>
+                    <span>🦎 Faune endémique</span>
+                    <span>🚣 Pirogue sur la Manambolo</span>
+                    <span>⛰️ Petit Tsingy</span>
+                    <span>🏔️ Grand Tsingy (UNESCO)</span>
+                    <span>🌅 Allée des Baobabs</span>
+                    <span>❤️ Baobab Amoureux</span>
+                </div>
+                <div class="circuit-info-lists">
+                    <div>
+                        <h4>Inclus</h4>
+                        <ul>
+                            <li>Véhicule privé avec chauffeur + carburant</li>
+                            <li>Traversées en bac</li>
+                            <li>Frais d'entrée et guides locaux</li>
+                            <li>Balade en pirogue</li>
+                            <li>Hébergement à Bekopaka (3 nuits)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Non inclus</h4>
+                        <ul>
+                            <li>Repas et boissons</li>
+                            <li>Dépenses personnelles</li>
+                            <li>Pourboires</li>
+                            <li>Nuit à Morondava</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="planner-note">⚠️ Départ matinal à 05h30 le jour 1. Le jour 3 demande une bonne condition physique.</p>
+            </div>
+
+            <div id="planner-excursions-list">
+                <p class="planner-note">Choisissez d'abord vos destinations pour voir les excursions disponibles.</p>
+            </div>
+        </div>
+
+        <div class="planner-nav-buttons">
+            <button type="button" id="planner-prev" class="btn btn-outline">Précédent</button>
+            <button type="button" id="planner-next" class="btn">Suivant</button>
+        </div>
+    </div>
+
+    <!-- Estimation panel -->
+    <div class="planner-estimate" id="planner-estimate">
+        <h3>Votre voyage estimé</h3>
+        <div class="estimate-grid">
+            <div class="estimate-line"><span>Hébergement</span><strong id="est-accommodation">—</strong></div>
+            <div class="estimate-line"><span>Transport</span><strong id="est-transport">—</strong></div>
+            <div class="estimate-line"><span>Excursions</span><strong id="est-excursions">—</strong></div>
+            <div class="estimate-line"><span>Guide</span><strong id="est-guide">—</strong></div>
+            <div class="estimate-line"><span>Frais estimés</span><strong id="est-fees">—</strong></div>
+            <div class="estimate-line"><span>Durée totale nécessaire</span><strong id="est-duration">—</strong></div>
+            <div class="estimate-line"><span>Nombre de transferts</span><strong id="est-transfers">—</strong></div>
+        </div>
+        <div class="estimate-total">
+            <span>Total estimé</span>
+            <strong id="est-total">€0</strong>
+        </div>
+        <div id="planner-result" class="planner-result"></div>
+        <div class="planner-actions">
+            <button type="button" id="planner-save" class="btn btn-outline">💾 Enregistrer mon itinéraire</button>
+            <button type="button" id="planner-share" class="btn btn-outline">🔗 Partager mon projet</button>
+            <button type="button" id="planner-quote" class="btn">Demander mon devis personnalisé</button>
+        </div>
+        <p class="planner-note" id="planner-save-note"></p>
+    </div>
+</section>
+
+
+<!-- Quote request modal -->
+<div class="quote-modal" id="quote-modal">
+    <div class="quote-modal-content">
+        <button type="button" class="quote-modal-close" id="quote-modal-close">&times;</button>
+        <h3>Demander mon devis personnalisé</h3>
+        <p>Voici un résumé de votre projet — ajoutez vos coordonnées et nous vous répondrons rapidement.</p>
+        <div class="quote-summary" id="quote-summary"></div>
+        <form id="quote-form">
+            <div class="field">
+                <label for="quote-name">Nom complet</label>
+                <input type="text" id="quote-name" required>
+            </div>
+            <div class="field">
+                <label for="quote-email">Email</label>
+                <input type="email" id="quote-email" required>
+            </div>
+            <div class="field">
+                <label for="quote-phone">Téléphone / WhatsApp</label>
+                <input type="tel" id="quote-phone">
+            </div>
+            <div class="field">
+                <label for="quote-preferences">Préférences supplémentaires</label>
+                <textarea id="quote-preferences" rows="3" placeholder="Autre chose à nous indiquer ?"></textarea>
+            </div>
+            <button type="submit" class="btn">Envoyer ma demande</button>
+        </form>
+    </div>
+</div>
+
+
+<!-- ===========================
+     TOP DESTINATIONS
+=========================== -->
+<section class="destinations" id="destinations">
+    <h2>Destinations phares</h2>
+    <p class="subtitle">Explorez les plus belles destinations de Madagascar.</p>
+
+    <div class="destination-grid">
+        <div class="card">
+            <img src="../images/nosybe.jpg" alt="Nosy Be">
+            <h3>Nosy Be</h3>
+            <p>Îles paradisiaques, eaux turquoise, vie marine et expériences inoubliables.</p>
+            <a href="../nosybe.html">Découvrir →</a>
+        </div>
+        <div class="card">
+            <img src="../images/morondava.jpg" alt="Morondava">
+            <h3>Morondava</h3>
+            <p>Découvrez l'Allée des Baobabs, la forêt de Kirindy et les spectaculaires Tsingy.</p>
+            <a href="../morondava.html">Découvrir →</a>
+        </div>
+        <div class="card">
+            <img src="../images/toliara.jpg" alt="Tuléar">
+            <h3>Tuléar (Toliara)</h3>
+            <p>Magnifiques plages, forêt de Reniala, culture Vezo et couchers de soleil inoubliables.</p>
+            <a href="../tulear.html">Découvrir →</a>
+        </div>
+        <div class="card">
+            <img src="../images/saintemarie.jpg" alt="Sainte Marie">
+            <h3>Côte Est &amp; Sainte-Marie</h3>
+            <p>Paysages tropicaux, baleines, forêts humides et authentique culture malgache.</p>
+            <a href="../east-coast.html">Découvrir →</a>
+        </div>
+        <div class="card">
+            <img src="../images/diegosuarez.jpg" alt="Diego Suarez">
+            <h3>Diego Suarez</h3>
+            <p>Mer d'Émeraude, Montagne d'Ambre, Tsingy Rouge et paysages uniques.</p>
+            <a href="../diego-suarez.html">Découvrir →</a>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===========================
+     TOURS & EXPERIENCES
+=========================== -->
+<section class="services" id="tours">
+    <h2>Circuits &amp; expériences</h2>
+    <p class="subtitle">Quelle que soit votre façon d'explorer Madagascar, nous façonnons le voyage autour de vous.</p>
+
+    <div class="services-grid">
+        <div class="service-card">
+            <img src="../images/tours/private-tour.jpg" alt="Expérience de circuit privé">
+            <h3>Circuits privés</h3>
+            <p>Votre propre chauffeur-guide et véhicule, un rythme entièrement à vous, du premier au dernier jour.</p>
+        </div>
+        <div class="service-card">
+            <img src="../images/tours/group-adventure.jpg" alt="Expérience d'aventure en groupe">
+            <h3>Aventures en groupe</h3>
+            <p>Rejoignez un petit groupe de voyageurs sur un départ fixe, en partageant la découverte sans partager la foule.</p>
+        </div>
+        <div class="service-card">
+            <img src="../images/tours/family-trip.jpg" alt="Expérience de voyage en famille">
+            <h3>Famille &amp; sur mesure</h3>
+            <p>Des itinéraires construits autour du rythme, des intérêts et du confort de votre famille, des tout-petits aux grands-parents.</p>
+        </div>
+        <div class="service-card">
+            <img src="../images/tours/transfer.jpg" alt="Service de transfert et logistique">
+            <h3>Transferts &amp; logistique</h3>
+            <p>Accueil à l'aéroport, vols intérieurs, autorisations et transport interne — tout organisé avant votre arrivée.</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===========================
+     GALLERY
+=========================== -->
+<section class="gallery" id="gallery">
+    <h2>Galerie</h2>
+    <p class="subtitle">Un aperçu de ce qui vous attend à travers l'île.</p>
+
+    <div class="gallery-grid">
+        <div class="gallery-item"><img src="../images/gallery/gallery-1.jpg" alt="Photo galerie Madagascar 1"></div>
+        <div class="gallery-item"><img src="../images/gallery/gallery-2.jpg" alt="Photo galerie Madagascar 2"></div>
+        <div class="gallery-item"><img src="../images/gallery/gallery-3.jpg" alt="Photo galerie Madagascar 3"></div>
+        <div class="gallery-item"><img src="../images/gallery/gallery-4.jpg" alt="Photo galerie Madagascar 4"></div>
+        <div class="gallery-item"><img src="../images/gallery/gallery-5.jpg" alt="Photo galerie Madagascar 5"></div>
+        <div class="gallery-item"><img src="../images/gallery/gallery-6.jpg" alt="Photo galerie Madagascar 6"></div>
+        <div class="gallery-item"><img src="../images/gallery/gallery-7.jpg" alt="Photo galerie Madagascar 7"></div>
+        <div class="gallery-item"><img src="../images/gallery/gallery-8.jpg" alt="Photo galerie Madagascar 8"></div>
+        <div class="gallery-item"><img src="../images/gallery/gallery-9.jpg" alt="Photo galerie Madagascar 9"></div>
+    </div>
+</section>
+
+
+<!-- ===========================
+     CONTACT
+=========================== -->
+<section id="contact" class="contact">
+    <h2>Prêt à démarrer votre aventure malgache ?</h2>
+    <p>Indiquez-nous vos dates et ce que vous aimeriez voir — on s'occupe du reste.</p>
+    <div class="contact-buttons">
+        <a href="https://wa.me/261342278490" class="btn">Nous contacter sur WhatsApp</a>
+        <a href="mailto:matourguidemadagascar@gmail.com" class="btn btn-outline">Envoyer un email</a>
+    </div>
+</section>
+
+
+<!-- ===========================
+     FOOTER
+=========================== -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>Ma'Tour Guide Madagascar</h3>
+            <p>
+                Découvrez Madagascar avec des guides locaux passionnés.
+                Nous organisons des circuits authentiques à travers l'île,
+                de Nosy Be à Morondava, Diego Suarez et au-delà.
+            </p>
+        </div>
+        <div class="footer-column">
+            <h4>Contact</h4>
+            <a href="tel:+261342278490">📞 +261 34 22 784 90</a>
+            <p>✉️ matourguidemadagascar@gmail.com</p>
+        </div>
+        <div class="footer-column">
+            <h4>Suivez-nous</h4>
+            <a href="https://web.facebook.com/profile.php?id=61591812098440" target="_blank">Facebook</a>
+            <a href="https://www.instagram.com/mato_urguidemadagascar/" target="_blank">Instagram</a>
+            <a href="https://www.tripadvisor.com/Attraction_Review-g479206-d34550742-Reviews-Ma_Tour_Guide_Madagascar-Nosy_Be_Antsiranana_Province.html" target="_blank">TripAdvisor</a>
+        </div>
+    <div class="footer-bottom">
+    <p>© 2026 Ma'Tour Guide Madagascar. Tous droits réservés.</p>
+    <p>Site conçu par <strong>Kevino Totozafy</strong> · <a href="../login.html" class="footer-admin-link">Admin</a></p>
+</div>
+</footer>
+
+
+<script>
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('nav-toggle').checked = false;
+        });
+    });
+</script>
+
+<script src="../script.js"></script>
+<script src="../explore-madagascar.js"></script>
+</body>
+</html>
